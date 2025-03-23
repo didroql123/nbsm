@@ -26,5 +26,5 @@ for entry in feed.entries:
 
 sitemap = xml_template.format(urls)
 
-with open("sitemap.xml", "w", encoding="utf-8") as f:
+with open("sitemap2.xml", "w", encoding="utf-8") as f:
     f.write(sitemap)
