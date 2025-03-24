@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://didroql123.github.io/nbsm/sitemap.xml
