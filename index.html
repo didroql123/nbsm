@@ -1,23 +1,207 @@
-<h1>네이버 블로그 글 목록</h1>
-<ul><li><a href="posts/3월-3주차-토스증권-해외주식-개인-포트폴리오-이더리움-ETHU-목표-매매-주가.html">3월 3주차 토스증권 해외주식 개인 포트폴리오 &amp; &quot;이더리움&quot; &quot;ETHU&quot; 목표 매매 주가</a></li>
-<li><a href="posts/수원-인계동-청소년문화센터-월남쌈-음식점-월남쌈김상사-수원인계점.html">“수원 인계동 청소년문화센터 월남쌈 음식점” 월남쌈김상사 수원인계점</a></li>
-<li><a href="posts/Godot-모바일-디펜스-게임-만들기-0주제-선정.html">Godot 모바일 디펜스 게임 만들기 : 0.주제 선정</a></li>
-<li><a href="posts/3월-2주차-토스증권-해외주식-개인-포트폴리오.html">3월 2주차 토스증권 해외주식 개인 포트폴리오</a></li>
-<li><a href="posts/수원-매탄동-영통구청-술집-동백연화-영통구청점.html">[수원 매탄동 영통구청 술집] 동백연화 영통구청점</a></li>
-<li><a href="posts/서울-홍제동-홍제역-2번출구-돈까스-음식점-돈기부여-홍제점.html">[서울 홍제동 홍제역 2번출구 돈까스 음식점] 돈기부여 홍제점</a></li>
-<li><a href="posts/서울-남산-N타워-데이트-코스-안중근의사기념관자물쇠.html">서울 남산 N타워 데이트 코스 &quot;안중근의사기념관&quot;&quot;자물쇠&quot;</a></li>
-<li><a href="posts/3월-1주차-토스증권-해외주식-개인-포트폴리오.html">3월 1주차 토스증권 해외주식 개인 포트폴리오</a></li>
-<li><a href="posts/화성-반월동-헤센IT지식산업센터-소고기-음식점-우마주-동탄1호점.html">[화성 반월동 헤센IT지식산업센터 소고기 음식점] 우마주 동탄1호점</a></li>
-<li><a href="posts/Godot-초간단-게임-만들기---8-exe-릴리즈.html">Godot 초간단 게임 만들기 - 8 : exe 릴리즈</a></li>
-<li><a href="posts/Godot-초간단-게임-만들기---7-파일-저장-및-불러오기.html">Godot 초간단 게임 만들기 - 7 : 파일 저장 및 불러오기</a></li>
-<li><a href="posts/Godot-초간단-게임-만들기---6-총알피하기-게임-개발---점수체크.html">Godot 초간단 게임 만들기 - 6 : 총알피하기 게임 개발 - 점수체크</a></li>
-<li><a href="posts/수원-우만-음식점-우만동족발집.html">[수원 우만 음식점] 우만동족발집</a></li>
-<li><a href="posts/Godot-초간단-게임-만들기---5-총알피하기-게임-개발---충돌-설정.html">Godot 초간단 게임 만들기 - 5 : 총알피하기 게임 개발 - 충돌 설정</a></li>
-<li><a href="posts/Godot-초간단-게임-만들기---4-총알피하기-게임-개발.html">Godot 초간단 게임 만들기 - 4 : 총알피하기 게임 개발</a></li>
-<li><a href="posts/수원-인계-음식점-고베규카츠.html">[수원 인계 음식점] 고베규카츠</a></li>
-<li><a href="posts/Godot-초간단-게임-만들기---3-메인화면Main-Menu-개선.html">Godot 초간단 게임 만들기 - 3 : 메인화면(Main Menu) 개선</a></li>
-<li><a href="posts/Godot-초간단-게임-만들기---2-메인화면Main-Menu-만들기.html">Godot 초간단 게임 만들기 - 2 : 메인화면(Main Menu) 만들기</a></li>
-<li><a href="posts/Godot-초간단-게임-만들기---1-설치부터-간단-인터페이스-익히기.html">Godot 초간단 게임 만들기 - 1 : 설치부터 간단 인터페이스 익히기</a></li>
-<li><a href="posts/Godot-엔진-설치-방법.html">Godot 엔진 설치 방법</a></li>
-<li><a href="posts/Godot-vs-Unity-어떤-엔진을-선택할까---0-엔진선택.html">Godot vs Unity: 어떤 엔진을 선택할까? - 0 : 엔진선택</a></li>
-</ul>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>네이버 블로그 포스팅 리스트</title>
+    <style>
+        body { font-family: sans-serif; background: #f9f9f9; padding: 2em; max-width: 900px; margin: auto; }
+        .card { background: white; padding: 1.5em; margin-bottom: 1.5em; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .card-title { font-size: 1.3em; font-weight: bold; margin-bottom: 0.5em; }
+        .card-date { color: #888; font-size: 0.9em; margin-bottom: 0.8em; }
+        .card-summary { font-size: 1em; color: #333; margin-bottom: 1em; }
+        .card-link a { background: #0077cc; color: white; padding: 0.5em 1em; text-decoration: none; border-radius: 6px; font-size: 0.95em; }
+        .card-link a:hover { background: #005fa3; }
+    </style>
+</head>
+<body>
+    <h1>네이버 블로그 최신 글 모음</h1>
+
+    <div class="card">
+        <div class="card-title"><a href="posts/3월-3주차-토스증권-해외주식-개인-포트폴리오-이더리움-ETHU-목표-매매-주가.html">3월 3주차 토스증권 해외주식 개인 포트폴리오 &amp; &quot;이더리움&quot; &quot;ETHU&quot; 목표 매매 주가</a></div>
+        <div class="card-date">🗓 2025-03-23</div>
+        <div class="card-summary">목표와 자산관리의 차원에서 개인투자목표를 세우고 멘탈관리를 위한 투자 포트폴리오 포스팅을 진행합니다. 1차목표 - 매매를 통한 해외 보유 주식 가치 $100,000 달성하기 - 나만의 손실,이익 기준정하기 3월 18일 - 에디텍스트의 병합 완료후 주식 입고 - MSTY 배당금 입금 - 듀크에너지 배당금 입금 3월 19일 - 에디텍스트 매도 ( +$175.29 // 7%) - 매도금으로 ETHU 매수 3월 21일 - 병합소식으로 재규어헬스 250주 매수 이번주 평가금은 저번주와 비교하여 회복하였지만 아직 갈길이 먼거같습니다. 아래 내용은 지극히 개인적인 내용입니다. ETHU의 목표 설정 이더리움의 기술적 분석으로는 현재 약 2000달러를 유지하고있으며, 직전 횡보....... <img src="https://blogthumb.pstatic.net/MjAyNTAzMjRfMTU5/MDAxNzQyNzU2NzMyNDQ3.-0i6dxgVme4wHwaWfDkVEBdhodjD-b7BwSHK8m_SAdog.hkjvbZlDC0Dw44NV_G4b1n3TGVDXpTGEnjBcbJ2zJ7kg.PNG/image.png?type=s3" /></div>
+        <div class="card-link">
+            <a href="posts/3월-3주차-토스증권-해외주식-개인-포트폴리오-이더리움-ETHU-목표-매매-주가.html">상세 보기</a>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-title"><a href="posts/수원-인계동-청소년문화센터-월남쌈-음식점-월남쌈김상사-수원인계점.html">“수원 인계동 청소년문화센터 월남쌈 음식점” 월남쌈김상사 수원인계점</a></div>
+        <div class="card-date">🗓 2025-03-20</div>
+        <div class="card-summary">이번에 방문한 식당은 수원 인계동 월남쌈김상사 수원인계점입니다. 월남쌈김상사 수원인계점은 인계동 청소년문화센터 주변에 위치하고 있습니다. 이번엔 여자친구와 데이트 후 차를 가지고 방문하였습니다. 주차는 바로앞 인계동 청소년문화센터에 주차를 하고 방문하면 됩니다. 분위기는 밝으며, 매장은 넓습니다. 맛 최고 무한리필 넓은매장 밝은분위기 무료주차 8시30분 라스트오더여서 부라부랴 주차하고 들어갔습니다. 샤브샤브용 고기와 구이용 고기를 따로 가져다 먹을수 있는점도 좋고, 야채도 계속해서 가져다 먹을수 있음에 좋았습니다. 저는 구이용 고기를 좋아하고 여자친구는 샤브용고기를 더 좋아해서 입맛에 따라 먹을수 있고, ....... <img src="https://blogthumb.pstatic.net/MjAyNTAzMjFfMjk2/MDAxNzQyNDg2MDY1NTA4.pwSvNR-CRp-vTMX40mv2BXtvW1IttFIah5s65opV6dEg.-o_NSeUjKxojhWCPyHA2ISEnBBc-E2PywKhu3WM1wuog.JPEG/output_1385439125.jpg?type=s3" /></div>
+        <div class="card-link">
+            <a href="posts/수원-인계동-청소년문화센터-월남쌈-음식점-월남쌈김상사-수원인계점.html">상세 보기</a>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-title"><a href="posts/Godot-모바일-디펜스-게임-만들기-0주제-선정.html">Godot 모바일 디펜스 게임 만들기 : 0.주제 선정</a></div>
+        <div class="card-date">🗓 2025-03-18</div>
+        <div class="card-summary">이번 포스팅에서는 Godot 엔진을 활용해 간단한 모바일용 디펜스게임을 만들어보면서 배워나가려고 합니다. 오늘은 주제선정과 프로젝트 생성까지 진행하겠습니다. 주제선정 제가 만들 게임은 누구나 쉽게 즐길 수 있는 타워 디펜스 형태의 게임입니다. 플레이어는 몰려오는 적으로부터 기지를 지키며 생존하는 것이 목표입니다. 선정한 이유 - 비교적 구현이 쉬움 - 모바일환경에서도 직관적이고 재미있게 즐길수 있음 - 핵심기능을 쉽게 응용 가능 Godot 엔진 설치하기 - Godot 엔진 설치는 이전 포스팅 자료 첨부 프로젝트 생성하기 1. Godot 엔진 실행 후 "만들기" 클릭 2. 프로젝트 이름을 설정하고 프로젝트 저장 경로를 선택 3........ <img src="https://blogthumb.pstatic.net/MjAyNTAzMTlfOTYg/MDAxNzQyMzIyODM1NzY1.RaY9LNPggibL_NVptTTUgbHS0PhslLYqsgaIvEPe4icg.JW8vbZWCmy28x2_q6Ssl3flmG-dUiZN6VMvHxBvRwhsg.PNG/image.png?type=s3" /></div>
+        <div class="card-link">
+            <a href="posts/Godot-모바일-디펜스-게임-만들기-0주제-선정.html">상세 보기</a>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-title"><a href="posts/3월-2주차-토스증권-해외주식-개인-포트폴리오.html">3월 2주차 토스증권 해외주식 개인 포트폴리오</a></div>
+        <div class="card-date">🗓 2025-03-16</div>
+        <div class="card-summary">목표와 자산관리의 차원에서 개인투자목표를 세우고 멘탈관리를 위한 투자 포트폴리오 포스팅을 진행합니다. 1차목표 - 매매를 통한 해외 보유 주식 가치 $100,000 달성하기 (03.16 기준 약 $45,500) - 나만의 손실,이익 기준정하기 이번주 요약 - 급락의 연속이었다. - 존버를 진행할지, 손절을 할지 고민이 많았던 한주 3월 10일 - AMDY의 배당금 입금 - 수익이난 BOIL을 마무리 정리 진행 - 해당 금액으로 ETHU 이더리움 ETF 매수 진행 3월 11일 - 정찰용으로 1주있던 듀크에너지 매도 - AMDL 매수 3월 14일 - LABU 손절 - 애디텍스트 병합소식에 불나방같이 매수 3월 15일 - 정찰용 크로마덱스 매도 - AMDL 매수 이번주 평가금입니다. 저번주....... <img src="https://blogthumb.pstatic.net/MjAyNTAzMTdfMTcx/MDAxNzQyMTQwODcwNjMy.3iswM9DMDn9Ujx4bKNzlAlY67Dyw3IAOiFxC8KJlFoEg.V2u54ovcg021ssSN-Nn_HnhBXrDuyp5UVCdHD-zfddgg.PNG/image.png?type=s3" /></div>
+        <div class="card-link">
+            <a href="posts/3월-2주차-토스증권-해외주식-개인-포트폴리오.html">상세 보기</a>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-title"><a href="posts/수원-매탄동-영통구청-술집-동백연화-영통구청점.html">[수원 매탄동 영통구청 술집] 동백연화 영통구청점</a></div>
+        <div class="card-date">🗓 2025-03-13</div>
+        <div class="card-summary">이번에 방문한 식당은 수원 매탄동 영통구청 주변 매탄 중심상가에 위치해있는 밥술 모두 가능한 맛집 동백연화입니다. 맛 최고! 비쥬얼 훌륭! 양 많음 어두운 분위기 왕 추천 늦은 저녁시간 보쌈/족발 집을 찾던와중 늦은 밤 열려있는 동백연화를 발견했습니다. 골뱅이 낙지 무침과 수육을 시키고, 소면을 시켜 무침에 비벼먹었습니다 수육과 낙지의 질이 훌륭하고, 맥주 한 잔과 함께 너무 맛있게 식사를 즐길 수 있었습니다. 든든하게 1차 혹은 2차 장소로도 손색이 없는, 분위기 좋은 맛집이었어요. <img src="https://blogthumb.pstatic.net/MjAyNTAzMTRfMjc1/MDAxNzQxODk4MTE0OTA4.7o29As4HuZK58Eopg8zc4B-Njo1cWtGpXwSiDeSftN0g.qQv3-pbMOvF_uacBk4NuzNBrzdUA_CX_qQPlLTUxU3og.JPEG/output_4254212021.jpg?type=s3" /></div>
+        <div class="card-link">
+            <a href="posts/수원-매탄동-영통구청-술집-동백연화-영통구청점.html">상세 보기</a>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-title"><a href="posts/서울-홍제동-홍제역-2번출구-돈까스-음식점-돈기부여-홍제점.html">[서울 홍제동 홍제역 2번출구 돈까스 음식점] 돈기부여 홍제점</a></div>
+        <div class="card-date">🗓 2025-03-12</div>
+        <div class="card-summary">이번에 방문한 식당은 서울 홍제동, 홍제역 2번 출구에서 200m가량 떨어져 있는 돈까스 맛집 돈기부여 홍제점입니다. 분위기는 밝으며, 식사할수 있는 테이블이 4테이블 있었습니다. 맛 왕왕 최고! 비쥬얼 왕 최고! 양 많음 밝은 분위기 친절도 최고!! 왕왕 추천! 이번엔 여자친구와 둘이서 돈기부여 홍제점을 방문했습니다. 서울에서 일하고, 늦은 점심 겸 저녁으로 돈까스 먹으러 방문 사장님이 매우 반갑게 맞이해주셨고, 가게안에 제일 먼저 보이는 문구가 제 맘을 대신해주는것같았죠 ㅎㅎ "세상 완벽한 음식은 돈까스!" 저는 돈까스, 여자친구는 함박스테이크를 시켜먹었는데, 둘다 너무 맛있어서 정신없게 먹었습니다! 돈까스의....... <img src="https://blogthumb.pstatic.net/MjAyNTAzMTJfMTI0/MDAxNzQxNzE0NDY1NDkz.FwGhW-sGZ0BZnSSUGCVEUxHWuAlIP7dDdGCV639E0iUg.tTi8ji0jvYa77_3ZvphwA2ERtnNSp65ZcVizNDIkE9Ag.JPEG/KakaoTalk_20250312_020337146_02.jpg?type=s3" /></div>
+        <div class="card-link">
+            <a href="posts/서울-홍제동-홍제역-2번출구-돈까스-음식점-돈기부여-홍제점.html">상세 보기</a>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-title"><a href="posts/서울-남산-N타워-데이트-코스-안중근의사기념관자물쇠.html">서울 남산 N타워 데이트 코스 &quot;안중근의사기념관&quot;&quot;자물쇠&quot;</a></div>
+        <div class="card-date">🗓 2025-03-10</div>
+        <div class="card-summary">이번엔 여자친구와 남산타워로 데이트 가기로 했습니다~ 목적은 자물쇠걸기! 남산 케이블카를 타고 올라가려 했지만... 강풍으로 인해 운행 중지가 되어 있더군요.. 그래서 차선책으로 걸어올라가기로 결정했습니다! 주변 가장 가까운주차장에 주차를하고 보니 안중근의사기념관이 있어 바로 들어가 봤습니다. 역사에 큰 관심이 없던 저지만, 역사를 좋아하는 여자친구 덕분에 부가설명도 들으며 보니 흥미가 돋더군요! 그렇게 안중근의사기념관 한바퀴를 쭈~욱 돌고 목적지인 자물쇠채우기를 향해 갑니다. 저질체력 두명이서 힘겹게 올라가다보니 보이는 남산타워!! 자물쇠는 출발하기전 다이소에서 미리 준비해왔습니다. 네임펜도 준비해왔지만....... <img src="https://blogthumb.pstatic.net/MjAyNTAzMDhfMTQ1/MDAxNzQxNDI4OTQzMTQ3.GIfIPYuBaszz-kj1UNfbOc5WcJPgGoVLEAL9NoiTRE8g.IagiTtitzORImR-AujvuQNc-0VXK3gnRAFTIJW4je4gg.JPEG/IMG_0947.jpg?type=s3" /></div>
+        <div class="card-link">
+            <a href="posts/서울-남산-N타워-데이트-코스-안중근의사기념관자물쇠.html">상세 보기</a>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-title"><a href="posts/3월-1주차-토스증권-해외주식-개인-포트폴리오.html">3월 1주차 토스증권 해외주식 개인 포트폴리오</a></div>
+        <div class="card-date">🗓 2025-03-07</div>
+        <div class="card-summary">목표와 자산관리의 차원에서 개인투자목표를 세우고 멘탈관리를 위한 투자 포트폴리오 포스팅을 시작하려합니다. 매주 금요일이나 주말 오전에 포스팅 예정입니다. 금일 포스팅은 2025년 03월 07일 오전 2시에 작성하였습니다. 1차목표 - 매매를 통한 해외 보유 주식 가치 $100,000 달성하기 (03.07. 오전2시 기준 약 $52,300) - 나만의 손실,이익 기준정하기( 이건 투자 시작할때부터 정하려고 했지만 잘안됨 ㅠㅠ ) 저번달 요약 일드맥스 배당주들을 정리매매 진행 ( 약 -2000만원) 일드맥스 배당 (약 +500만원) 이번주 요약 금주 판매 수익 (약 -684만) 금주 배당 수익 (약 +$150) 3월 4일 - 저번주에 진입한 boil이 생각 이상의 수익을 빠르....... <img src="https://blogthumb.pstatic.net/MjAyNTAzMDZfMjcw/MDAxNzQxMjU4OTU5Mjc2.YxrRAN9peOEt-UTdFTxL9ENqn0-_CXaiJPfdfveCJgkg.pL2jTl3p38JoKz_GqJP5L1TT8EzTTWRnWoZh-d7hKcEg.JPEG/IMG_1001.jpg?type=s3" /></div>
+        <div class="card-link">
+            <a href="posts/3월-1주차-토스증권-해외주식-개인-포트폴리오.html">상세 보기</a>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-title"><a href="posts/화성-반월동-헤센IT지식산업센터-소고기-음식점-우마주-동탄1호점.html">[화성 반월동 헤센IT지식산업센터 소고기 음식점] 우마주 동탄1호점</a></div>
+        <div class="card-date">🗓 2025-03-05</div>
+        <div class="card-summary">이번에 방문한 음식점은 화성시 반월동의 헤센IT지식산업센터 1층에 위치한 소고기 맛집 우마주 동탄1호점입니다. 분위기는 밝으며, 편한 식사를 할수 있었습니다. 맛 최고!! 양 적당 밝은 분위기 친절도 최고!! 왕왕 추천!! 이번엔 성인 남성 4명이서 우마주동탄1호점을 방문했습니다. 소금생갈빗살,마늘 LA갈비, 쫄면, 냉면, 된장찌개, 계란찜을 시켜서먹었습니다. 생갈비살, 마늘 LA갈비들은 역시나 맛있었어요. 밑반찬으로 나오는 상추겉절이와 김치류도 너무 잘어울렸습니다. 소스중에서도 마늘소스 같은게 있는데 소고기랑 곁들어 먹으니 완전 최고의 맛을 자랑했습니다. 너무 맛있어서, 배부른데도 마늘 갈빗살 주물럭을 추가로 시켜먹었....... <img src="https://blogthumb.pstatic.net/MjAyNTAzMDVfMjAg/MDAxNzQxMTA3MDYyNDEz.VKfL8Pr52K2uCMc9MZK16IBjJwFpRFnX3IXX6lITXE0g.ty2__1Kjn3R3fEb-Li80wDhvAjv7KED4-_q5noRah48g.JPEG/KakaoTalk_20250305_013328461.jpg?type=s3" /></div>
+        <div class="card-link">
+            <a href="posts/화성-반월동-헤센IT지식산업센터-소고기-음식점-우마주-동탄1호점.html">상세 보기</a>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-title"><a href="posts/Godot-초간단-게임-만들기---8-exe-릴리즈.html">Godot 초간단 게임 만들기 - 8 : exe 릴리즈</a></div>
+        <div class="card-date">🗓 2025-02-28</div>
+        <div class="card-summary">초간단 게임 만들기 마지막! 이번 포스팅에서는 Godot에서 Windows 실행 파일(.exe)로 게임을 빌드하는 방법을 정리합니다. 1. Windows 실행 파일 빌드를 위한 프로젝트 설정 빌드하기 전에 먼저 프로젝트 설정을 변경해야 합니다. 프로젝트 설정 변경 방법 Godot 실행 → Project → Project Settings 클릭 왼쪽 Application → Config에서 아래 값 수정 Application Name → 게임 이름 입력 Version → 1.0 (게임 버전 입력) 왼쪽 Display → Window에서 해상도 설정 Width/Height → 1920x1080 또는 원하는 해상도 Resizable → False (해상도를 고정할 경우) 아이콘 설정 (Project → Project Settings → Application → Icon) Icon → .png....... <img src="https://blogthumb.pstatic.net/MjAyNTAyMjhfNzgg/MDAxNzQwNzI0MzE3NDcy.RIlprfQA9slWI-nh6Du7inG3rjlKsd5I1qzGjc7eqsMg.DXDE0Cxx-uZpiIKZX6gv793fyAB3BfKsWnFsnb8Wd1Qg.PNG/image.png?type=s3" /></div>
+        <div class="card-link">
+            <a href="posts/Godot-초간단-게임-만들기---8-exe-릴리즈.html">상세 보기</a>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-title"><a href="posts/Godot-초간단-게임-만들기---7-파일-저장-및-불러오기.html">Godot 초간단 게임 만들기 - 7 : 파일 저장 및 불러오기</a></div>
+        <div class="card-date">🗓 2025-02-27</div>
+        <div class="card-summary">Godot 초간단 게임 개발 일지 7일차! 이번 포스팅에서는 게임을 껐다 켜도 최고 점수가 유지되도록 저장하는 방법을 정리합니다. 오늘 진행한 내용은 다음과 같습니다. GameManager.gd에서 점수를 저장하고 불러오는 기능 추가 MainMenu.gd에서 최고 점수를 정상적으로 표시하도록 수정 점수 저장 파일(high_score.save)이 어디에 저장되는지 확인하는 방법 이제 하나씩 자세히 살펴보겠습니다! 1. GameManager.gd에서 점수 저장 및 불러오기 기능 추가 최고 점수를 파일에 저장하고, 게임 시작 시 불러오는 기능을 추가합니다. GameManager.gd 2. MainMenu.gd에서 최고 점수 표시 기능 수정 최고 점수를 MainMenu.tscn에서 정상적으로 표시하는....... <img src="https://blogthumb.pstatic.net/MjAyNTAyMjdfMjUx/MDAxNzQwNjMxNjkxODAz.YVbQe-CU9Y8PHSanHj09tShNWD-8uL1Uz6tNj-ZDuKYg.fDWinQo_0Z7v8DG1j1NGK2XbOUNID9jjgyhOSTl1vQ4g.PNG/image.png?type=s3" /></div>
+        <div class="card-link">
+            <a href="posts/Godot-초간단-게임-만들기---7-파일-저장-및-불러오기.html">상세 보기</a>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-title"><a href="posts/Godot-초간단-게임-만들기---6-총알피하기-게임-개발---점수체크.html">Godot 초간단 게임 만들기 - 6 : 총알피하기 게임 개발 - 점수체크</a></div>
+        <div class="card-date">🗓 2025-02-26</div>
+        <div class="card-summary">Godot 초간단 게임 개발 일지 6일차! 이번 포스팅에서는 총알이 사라질 때 점수를 체크하고, 메인 화면에 최고 점수를 표시하는 기능을 정리합니다. 오늘 진행한 내용은 다음과 같습니다. GameManager를 AutoLoad로 등록하여 모든 씬에서 점수를 관리 Bullet.gd에서 총알이 사라질 때 점수 증가 MainMenu.gd에서 최고 점수를 화면에 표시 MainMenu.gd에서 게임 시작 시 점수를 초기화 이제 하나씩 자세히 살펴보겠습니다. 1. GameManager 추가 및 AutoLoad 등록 1. GameManager.gd 생성 먼저 점수를 관리하는 GameManager를 메인 씬에서 만들고, 스크립트를 붙혀 모든 씬에서 유지되도록 설정합니다. 2. GameManager를 AutoLoad로 등록 GameManag....... <img src="https://blogthumb.pstatic.net/MjAyNTAyMjZfMjU0/MDAxNzQwNTU3MTM3NDY5.fDF8ip34YNULcewldfPTpC2W_WRG1wgS1tc7B463xIQg.-u_Kl8xXA3-dGsyj28mIijhbTiXTvOVplg6nhlJsfekg.PNG/image.png?type=s3" /></div>
+        <div class="card-link">
+            <a href="posts/Godot-초간단-게임-만들기---6-총알피하기-게임-개발---점수체크.html">상세 보기</a>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-title"><a href="posts/수원-우만-음식점-우만동족발집.html">[수원 우만 음식점] 우만동족발집</a></div>
+        <div class="card-date">🗓 2025-02-26</div>
+        <div class="card-summary">이번에 방문한 곳은 아주대 근처 우만동족발집 아주대점 입니다. 분위기도 밝고 활기차서 편안한 식사가 가능했습니다. 맛 좋음 양 적당 밝은 분위기 친절함 추천! 저는 족발막국수 세트에서 막국수 대신 피자로 업그레이드 해먹었어요! 족발은 잡내 없이 부드럽고 쫄깃한 식감이 살아있었어요. 특히 한강라면이 서비스로 제공되었는데, 얼큰하고 개운한 맛이 족발과 찰떡궁합이었습니다. 족발집은 무생채를 아주 중요히 여기는데, 무생채와 양파절임이 맛있어서, 너무 잘먹었습니다. 치즈피자도 함께 주문했는데, 생각보다 족발과 잘 어울려 예상 외의 조합을 경험할 수 있었습니다. 매콤한 불족발에 치즈피자 먹으면 매운게 가라앉으면서 너무....... <img src="https://blogthumb.pstatic.net/MjAyNTAyMjZfNDEg/MDAxNzQwNTUxMzIyMDE1.wWpgQbOaO793G5plToyb0ZuHXWSeEUTJW6Iiakt9Nxwg.Yy3AYZLWbGerg_paaxi0bd7pE6nfPXXP0lghZm4WrCsg.JPEG/KakaoTalk_20250226_152118002.jpg?type=s3" /></div>
+        <div class="card-link">
+            <a href="posts/수원-우만-음식점-우만동족발집.html">상세 보기</a>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-title"><a href="posts/Godot-초간단-게임-만들기---5-총알피하기-게임-개발---충돌-설정.html">Godot 초간단 게임 만들기 - 5 : 총알피하기 게임 개발 - 충돌 설정</a></div>
+        <div class="card-date">🗓 2025-02-25</div>
+        <div class="card-summary">Godot 초간단 게임 개발 일지 5일차! 이번 포스팅에서는 총알과 플레이어가 충돌하면 게임이 종료되지 않고 메인 화면으로 이동하도록 설정하는 방법을 정리합니다. 오늘 진행한 내용은 다음과 같습니다. Bullet.tscn에서 총알과 플레이어 충돌 감지 구현 Player.gd에서 플레이어를 그룹에 추가하여 충돌 인식 Bullet.gd에서 충돌 발생 시 메인 화면으로 이동하도록 설정 신호(body_entered)를 활용하여 충돌 이벤트 처리 이제 하나씩 자세히 살펴보겠습니다! 1. Bullet 씬(Bullet.tscn)에서 충돌 감지 설정 1. Bullet 씬 생성 & 충돌 설정 Bullet.tscn을 열기 (FileSystem에서 Bullet.tscn 더블 클릭) 루트 노드(Area2D)에 CollisionShape2D....... <img src="https://blogthumb.pstatic.net/MjAyNTAyMjVfMjUw/MDAxNzQwNDYzOTM4NzA2.fmIDIT_qgo2GGRkhY45Niacngz1yyfXgrOSxf2Cp3KUg.94K4KVQ0J_xGOOX0736wRsprNmGinML95BeWZzGfv3Yg.PNG/image.png?type=s3" /></div>
+        <div class="card-link">
+            <a href="posts/Godot-초간단-게임-만들기---5-총알피하기-게임-개발---충돌-설정.html">상세 보기</a>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-title"><a href="posts/Godot-초간단-게임-만들기---4-총알피하기-게임-개발.html">Godot 초간단 게임 만들기 - 4 : 총알피하기 게임 개발</a></div>
+        <div class="card-date">🗓 2025-02-24</div>
+        <div class="card-summary">Godot 초간단 게임 개발 일지 4일차! 오늘 진행한 내용은 다음과 같습니다. Bullet.tscn을 생성하여 총알 오브젝트 만들기 BulletSpawner를 활용하여 총알이 랜덤한 위치에서 생성되도록 설정 Player를 타겟팅하여 총알이 플레이어 방향으로 발사되도록 구현 이제 하나씩 자세히 살펴보겠습니다! 1. Bullet 씬(Bullet.tscn) 만들기 총알을 별도의 씬으로 만들어 여러 개 생성할 수 있도록 설정합니다. 1. Bullet 씬 생성 새로운 씬(Ctrl + N) 생성 루트 노드로 Area2D 추가 → 이름을 Bullet으로 변경 자식 노드 추가: Sprite2D (총알 이미지 표시) 인스펙터 - Texture 에서 이미지 불러오기 CollisionShape2D (충돌 감지) 인스펙터 - CircleShap....... <img src="https://blogthumb.pstatic.net/MjAyNTAyMjRfMjM0/MDAxNzQwMzgyOTY4OTMy.tGkeCBaDA_pVB9eeXTRMnNeUjEUME18lGixGa178rLsg.9Yg37Xw5ix-eLBEEop_OyF80Uy7Gc75CaW3sJbCiWMYg.PNG/image.png?type=s3" /></div>
+        <div class="card-link">
+            <a href="posts/Godot-초간단-게임-만들기---4-총알피하기-게임-개발.html">상세 보기</a>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-title"><a href="posts/수원-인계-음식점-고베규카츠.html">[수원 인계 음식점] 고베규카츠</a></div>
+        <div class="card-date">🗓 2025-02-24</div>
+        <div class="card-summary">이번에 방문한 곳은 수원 인계동의 나혜석거리에 위치한 고베규카츠 수원인계점 입니다. 이곳은 규카츠를 메인으로 다양한 구성의 세트메뉴를 제공합니다. 먼저 보는 리뷰 맛 좋음 양 적당 분위기 좋음 친절함 추천! 저는 SET 2를 주문하였습니다. 사진에서 보이듯이, 겉은 살짝 튀겨져 있는 형태로 제공됩니다. 작은 화로에서 고기를 익혀 와사비와 함께 곁들여 먹으면 그야말로 최고! 다시 계란에 담갔다가 와사비를 올려 먹으면 더욱 깊은 풍미를 느낄 수 있습니다. 부드러운 고기와 조화로운 소스의 조합이 만족스러웠습니다. 총평 - 다양한 소스와 곁들임으로 입맛에 맞게 조절 가능 - 분위기 좋은 일본식 레스토랑에서의 특별한 경험 - 플....... <img src="https://blogthumb.pstatic.net/MjAyNTAyMjRfMjgy/MDAxNzQwMzc0NDgwODMz.UUqQ_PT6BBpQs17YlmxwXsnqHS_zU0phPEwpFCByU4Yg.ueOAnDxfh1krtqIbih8yuimbiJrmkXmdHMd4WFQjDswg.JPEG/KakaoTalk_20250224_140502839.jpg?type=s3" /></div>
+        <div class="card-link">
+            <a href="posts/수원-인계-음식점-고베규카츠.html">상세 보기</a>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-title"><a href="posts/Godot-초간단-게임-만들기---3-메인화면Main-Menu-개선.html">Godot 초간단 게임 만들기 - 3 : 메인화면(Main Menu) 개선</a></div>
+        <div class="card-date">🗓 2025-02-21</div>
+        <div class="card-summary">Godot 초간단 게임 개발 일지 3일차! 오늘 진행한 내용은 다음과 같습니다. 배경 화면 추가 (TextureRect 활용) 버튼 클릭 및 Hover 효과음 적용 ColorRect와 AnimationPlayer를 사용한 페이드 아웃 효과 적용 이제 하나씩 자세히 살펴보겠습니다! 1. 배경 화면 추가 게임의 메인 화면을 더욱 깔끔하고 보기 좋게 만들기 위해 TextureRect를 활용하여 배경을 추가합니다. 씬 트리에서 Control 노드를 선택 새로운 TextureRect 노드 추가 (Ctrl + A → "TextureRect" 선택) Inspector에서 속성 변경 Texture: 원하는 배경 이미지 선택 (res:// 폴더로 드래그 후 선택) Stretch Mode: Keep Aspect Centered (화면 비율 유지) Anchor Pres....... <img src="https://blogthumb.pstatic.net/MjAyNTAyMjFfMjcz/MDAxNzQwMTI3ODczMjU1.028ilHBEY_rpnxgpGPA_7ktA395At1Q9yBRWoiIHor8g.A15QKMnlM7vcxV4CX78ASwcZ_XuEDucyI3DpDzleDrUg.PNG/image.png?type=s3" /></div>
+        <div class="card-link">
+            <a href="posts/Godot-초간단-게임-만들기---3-메인화면Main-Menu-개선.html">상세 보기</a>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-title"><a href="posts/Godot-초간단-게임-만들기---2-메인화면Main-Menu-만들기.html">Godot 초간단 게임 만들기 - 2 : 메인화면(Main Menu) 만들기</a></div>
+        <div class="card-date">🗓 2025-02-20</div>
+        <div class="card-summary">Godot 초간단 게임 개발 일지 2일차! 게임을 만들 때 가장 먼저 보이는 화면이 바로 "메인 메뉴"입니다. Godot에서는 쉽게 메인 메뉴를 만들 수 있으며, 버튼을 클릭하면 게임이 시작되거나 종료되는 기능을 구현할 수 있습니다. 지난 포스팅에 이어 이번에는 Godot에서 메인 화면을 만드는 방법을 단계별로 설명하겠습니다. 1. 메인 화면(Scene) 설정 1. 새로운 씬 생성 Godot 실행 → "새 씬" 클릭 루트 노드로 "Control" 추가 (Ctrl + A → "Control" 선택) UI 요소는 "Control" 노드를 기반으로 구성됩니다. 2. UI 요소 추가 (텍스트 & 버튼) 1. 타이틀 추가 "Label" 노드....... <img src="https://blogthumb.pstatic.net/MjAyNTAyMjBfMjU5/MDAxNzQwMDM2OTMyMDI0.gETpdAoV7hVNd-Q0CcE0PxySE71stSoRCc_UGxWOD0og.dOYpC2EkmOVSGNc84XkCDSKti210PMd74gRzPiT2Zfog.PNG/image.png?type=s3" /></div>
+        <div class="card-link">
+            <a href="posts/Godot-초간단-게임-만들기---2-메인화면Main-Menu-만들기.html">상세 보기</a>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-title"><a href="posts/Godot-초간단-게임-만들기---1-설치부터-간단-인터페이스-익히기.html">Godot 초간단 게임 만들기 - 1 : 설치부터 간단 인터페이스 익히기</a></div>
+        <div class="card-date">🗓 2025-02-18</div>
+        <div class="card-summary">Godot 초간단 게임 개발 일지 1일차! Godot을 처음 배우는 초보자를 위해, 인터페이스를 익히면서 아주 간단한 게임을 만들어 보겠습니다. 이 프로젝트에서는 화면에서 캐릭터를 이동시키는 기본적인 2D 게임을 제작합니다. 1. 새로운 프로젝트 생성하기 Godot 실행 → New Project 클릭 프로젝트 이름: TEST-PROJECT 폴더 경로: 원하는 저장 위치 선택 렌더러 선택: Compatibility (PC & 모바일 모두 실행 가능) Create & Edit 클릭하여 프로젝트 생성 2. Godot 기본 인터페이스 살펴보기 Scene (씬): 게임 화면을 구성하는 요소 Node (노드): 게임을 구성하는 기본 요소 (스프라이트, UI, 물리 등) Inspector (인스펙터): 노드의 속성....... <img src="https://blogthumb.pstatic.net/MjAyNTAyMThfMTY2/MDAxNzM5ODYwNjYwMzY4.lvCKbo4clCA0iTm6c3wRqKXm6vgF09-1Ne2xhXtP1K0g.lkyNesKW5qBWdxe3EER3j1EZyFtYV1rMTGvQspcT8Isg.PNG/image.png?type=s3" /></div>
+        <div class="card-link">
+            <a href="posts/Godot-초간단-게임-만들기---1-설치부터-간단-인터페이스-익히기.html">상세 보기</a>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-title"><a href="posts/Godot-엔진-설치-방법.html">Godot 엔진 설치 방법</a></div>
+        <div class="card-date">🗓 2025-02-17</div>
+        <div class="card-summary">1. Godot 다운로드 Godot 엔진은 공식 웹사이트에서 무료로 다운로드할 수 있습니다. 공식웹사이트의 다운로드 페이지(https://godotengine.org/)로 이동합니다. Godot Engine을 다운 받습니다. 2. Godot 설치하기  Windows 설치 방법 다운로드한 .zip 파일을 압축 해제합니다. godot_v4.3-stable_win64.exe 실행 파일을 더블 클릭하여 실행합니다. 추가 설치 과정 없이 바로 실행됩니다. 3. Godot 실행 및 프로젝트 생성 Godot를 실행하면 처음 화면에서 만들기 버튼을 클릭합니다. 2. 프로젝트 이름과 저장할 경로를 설정하고 만들기&편집을 클릭합니다. <img src="https://blogthumb.pstatic.net/MjAyNTAyMThfNjgg/MDAxNzM5ODIyMTYxMjIx.YB9GmjCTZIafg7LKtRzXIWwLl0CnP7t0p2hspTyMVcUg.f_YLxdzNHbIpV71Deb98kz00G1c4iJJmJF_afgE_PN4g.PNG/image.png?type=s3" /></div>
+        <div class="card-link">
+            <a href="posts/Godot-엔진-설치-방법.html">상세 보기</a>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-title"><a href="posts/Godot-vs-Unity-어떤-엔진을-선택할까---0-엔진선택.html">Godot vs Unity: 어떤 엔진을 선택할까? - 0 : 엔진선택</a></div>
+        <div class="card-date">🗓 2025-02-17</div>
+        <div class="card-summary">게임 개발을 시작하면서 가장 먼저 고민했던 게 '어떤 게임 엔진을 써야 할까?'였습니다. 많고 많은 엔진 중, 많이 쓰이는 Unity와 Godot 사이에서 고민을 많이 하였다. 그래서 두 엔진의 장단점을 비교해 보고, 결국 Godot을 선택한 이유를 정리해 보았다. 1. Unity vs Godot 비교 장점 방대한 커뮤니티와 자료: 수많은 튜토리얼, 플러그인, 유료 및 무료 에셋을 활용할 수 있음 강력한 3D 성능: 다양한 플랫폼에서 고퀄리티 3D 게임을 제작 가능 C# 지원: C#을 기본 언어로 사용하며 강력한 성능을 제공 상업적 지원: 많은 회사들이 Unity를 사용하며, 상업적으로 성공한 게임도 많음 단점 무거운 엔진: 프로젝트가 커질수록 빌드 시.......</div>
+        <div class="card-link">
+            <a href="posts/Godot-vs-Unity-어떤-엔진을-선택할까---0-엔진선택.html">상세 보기</a>
+        </div>
+    </div>
+    </body></html>
