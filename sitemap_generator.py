@@ -43,7 +43,8 @@ for entry in feed.entries:
     title = html.escape(entry.title)
     link = html.escape(entry.link.replace("blog.naver.com", "m.blog.naver.com"))
     date = datetime(*entry.published_parsed[:6]).strftime("%Y-%m-%d")
-    summary = html.escape(entry.summary) if "summary" in entry else "(요약 없음)"
+    #summary = html.escape(entry.summary) if "summary" in entry else "(요약 없음)"
+    summary = html.escape(entry.description) if hasattr(entry, 'description') else "(요약 없음)"
     slug = slugify(entry.title)
     page_url = f"{base_url}/posts/{quote(slug)}.html"
     urls.append(page_url)
