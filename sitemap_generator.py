@@ -4,6 +4,7 @@ import html
 import os
 import re
 from urllib.parse import quote
+import codecs
 
 rss_url = "https://blog.rss.naver.com/rudtn668.xml"
 base_url = "https://didroql123.github.io/nbsm"
@@ -104,7 +105,7 @@ for url in urls:
   </url>'''
 sitemap_xml += '\n</urlset>'
 
-with open("sitemap.xml", "w", encoding="utf-8") as f:
+with codecs.open("sitemap.xml", "w", encoding="utf-8") as f:
     f.write(sitemap_xml)
 
 # ✅ robots.txt 생성
@@ -113,5 +114,5 @@ Allow: /
 Sitemap: {base_url}/sitemap.xml
 """
 
-with open("robots.txt", "w", encoding="utf-8") as f:
+with codecs.open("robots.txt", "w", encoding="utf-8") as f:
     f.write(robots_txt)
