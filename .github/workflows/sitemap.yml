@@ -27,6 +27,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add index.html sitemap.xml robots.txt posts/*.html
+          git add index.html robots.txt sitemap.xml sitemap-1.xml sitemap_index.xml posts/*.html
           git commit -m "🔄 자동 생성된 블로그 페이지 및 사이트맵 업데이트" || echo "No changes to commit"
           git push
