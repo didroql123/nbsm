@@ -1,3 +1,5 @@
 User-agent: *
 Allow: /
 Sitemap: https://didroql123.github.io/nbsm/sitemap.xml
+Sitemap: https://didroql123.github.io/nbsm/sitemap-1.xml
+Sitemap: https://didroql123.github.io/nbsm/sitemap_index.xml

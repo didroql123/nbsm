@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>Godot 모바일 디펜스 게임 만들기 : 2. 게임맵 구성하기</title>
-    <meta name="robots" content="index,follow">
-    <style>
-        body { font-family: sans-serif; max-width: 800px; margin: auto; padding: 2em; }
-        .title { font-size: 1.8em; font-weight: bold; margin-bottom: 0.5em; }
-        .meta { color: #777; margin-bottom: 1em; }
-        .summary { font-size: 1em; color: #333; margin-bottom: 2em; }
-        .badge { display:inline-block; font-size: 0.85em; padding: 2px 8px; border-radius: 999px; background:#eef; margin-right:8px; }
-        .summary img { max-width: 100%; height: auto; }
-        a.button { background: #0077cc; color: white; padding: 0.6em 1em; text-decoration: none; border-radius: 6px; }
-        a.button:hover { background: #005fa3; }
-    </style>
+  <meta charset="UTF-8">
+  <title>Godot 모바일 디펜스 게임 만들기 : 2. 게임맵 구성하기</title>
+  <meta name="robots" content="index,follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; max-width: 800px; margin: auto; padding: 2em; }
+    .title { font-size: 1.8em; font-weight: 800; margin-bottom: 0.5em; }
+    .meta { color: #777; margin-bottom: 1em; }
+    .summary { font-size: 1em; color: #333; margin-bottom: 2em; }
+    .badge { display:inline-block; font-size: 0.85em; padding: 2px 8px; border-radius: 999px; background:#eef; margin-right:8px; }
+    .summary img { max-width: 100%; height: auto; }
+    a.button { background: #0077cc; color: white; padding: 0.6em 1em; text-decoration: none; border-radius: 6px; }
+    a.button:hover { background: #005fa3; }
+  </style>
 </head>
 <body>
-    <div class="title">Godot 모바일 디펜스 게임 만들기 : 2. 게임맵 구성하기</div>
-    <div class="meta"><span class="badge">네이버</span>🗓 2025-03-31</div>
-    <div class="summary">이번 글에서는 Godot4 엔진을 사용해 디펜스 게임의 게임 맵을 타일맵(TileMap) 으로 구성해보겠습니다. 이번 주 목표 타일셋 이미지 준비 TileSet 리소스 생성 및 설정 TileMapLayer를 활용한 배경/길 구성 타일셋 이미지 준비 먼저 사용할 타일셋 이미지를 프로젝트에 추가합니다. 배경과 길에 사용될 이미지를 찾았습니다. TileSet 리소스 생성 FileSystem 창에서 우클릭 → New Resource... TileSet 검색 후 선택 이름 지정 후 저장 이제 해당 리소스를 더블 클릭하여 편집 창을 엽니다. 저는 background_tileset과 road_tileset을 만들었습니다. TileSet에 타일 이미지 추가하기 하단 TileSet 편집기에서 + 아이콘 클릭 아틀라스 선택 이미....... <img src="https://blogthumb.pstatic.net/MjAyNTAzMzFfMTA2/MDAxNzQzNDAzNzM1MzI2.WQolFfjVrQTNH5abWrJLdWbKhQtsk35_T-6QREYlNr4g._7bJbX0c2hhuRcnKaANZ-37GTzw7IJBU_fFi-l3sT3Yg.PNG/image.png?type=s3" /></div>
-    <a class="button" href="https://m.blog.naver.com/rudtn668/223816216278?fromRss=true&amp;trackingCode=rss" target="_blank" rel="noopener">네이버 블로그에서 전체 글 보기</a>
+  <div class="title">Godot 모바일 디펜스 게임 만들기 : 2. 게임맵 구성하기</div>
+  <div class="meta"><span class="badge">네이버</span>🗓 2025-03-31</div>
+  <div class="summary">이번 글에서는 Godot4 엔진을 사용해 디펜스 게임의 게임 맵을 타일맵(TileMap) 으로 구성해보겠습니다. 이번 주 목표 타일셋 이미지 준비 TileSet 리소스 생성 및 설정 TileMapLayer를 활용한 배경/길 구성 타일셋 이미지 준비 먼저 사용할 타일셋 이미지를 프로젝트에 추가합니다. 배경과 길에 사용될 이미지를 찾았습니다. TileSet 리소스 생성 FileSystem 창에서 우클릭 → New Resource... TileSet 검색 후 선택 이름 지정 후 저장 이제 해당 리소스를 더블 클릭하여 편집 창을 엽니다. 저는 background_tileset과 road_tileset을 만들었습니다. TileSet에 타일 이미지 추가하기 하단 TileSet 편집기에서 + 아이콘 클릭 아틀라스 선택 이미....... <img src="https://blogthumb.pstatic.net/MjAyNTAzMzFfMTA2/MDAxNzQzNDAzNzM1MzI2.WQolFfjVrQTNH5abWrJLdWbKhQtsk35_T-6QREYlNr4g._7bJbX0c2hhuRcnKaANZ-37GTzw7IJBU_fFi-l3sT3Yg.PNG/image.png?type=s3" /></div>
+  <a class="button" href="https://m.blog.naver.com/rudtn668/223816216278?fromRss=true&amp;trackingCode=rss" target="_blank" rel="noopener">네이버 블로그에서 전체 글 보기</a>
 </body>
 </html>
