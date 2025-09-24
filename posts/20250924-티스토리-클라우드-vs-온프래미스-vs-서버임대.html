@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>클라우드 vs 온프래미스 vs 서버임대</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: auto; padding: 2em; }
+        .title { font-size: 1.8em; font-weight: bold; margin-bottom: 0.5em; }
+        .meta { color: #777; margin-bottom: 1em; }
+        .summary { font-size: 1em; color: #333; margin-bottom: 2em; }
+        .badge { display:inline-block; font-size: 0.85em; padding: 2px 8px; border-radius: 999px; background:#eef; margin-right:8px; }
+        a.button { background: #0077cc; color: white; padding: 0.6em 1em; text-decoration: none; border-radius: 6px; }
+        a.button:hover { background: #005fa3; }
+    </style>
+</head>
+<body>
+    <div class="title">클라우드 vs 온프래미스 vs 서버임대</div>
+    <div class="meta"><span class="badge">티스토리</span>🗓 2025-09-24</div>
+    <div class="summary"><p>IT 인프라를 구축할 때 가장 많이 고민하는 것이 바로 <b>클라우드(Cloud)</b>, <b>온프레미스(On-Premise)</b>, 그리고 <b>서버 임대(Hosting/IDC)</b> 중 어떤 방식을 선택할지입니다.<br />각각의 특징과 장단점을 정리해보았습니다.</p>
+<hr />
+<h2>클라우드 (Cloud)</h2>
+<ul>
+<li><b>특징</b>
+<ul>
+<li>AWS, Azure, GCP 등이 대표적</li>
+<li>초기 투자비용이 거의 없고, 사용량에 따라 비용 지불</li>
+<li>즉시 확장 가능, 글로벌 서비스에 최적화</li>
+</ul>
+</li>
+<li><b>장점</b>
+<ul>
+<li>빠른 서비스 시작 가능</li>
+<li>확장성과 유연성이 뛰어남</li>
+<li>관리 부담이 적음 (보안 패치, 장애 복구 등)</li>
+</ul>
+</li>
+<li><b>단점</b>
+<ul>
+<li>장기적으로 비용이 많이 나올 수 있음</li>
+<li>특정 클라우드 벤더에 종속될 가능성</li>
+<li>데이터 주권/규제 이슈 발생 가능</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2>온프레미스 (On-Premise)</h2>
+<ul>
+<li><b>특징</b>
+<ul>
+<li>직접 서버를 구매하고 사내 또는 전용 데이터센터에 설치</li>
+<li>하드웨어, 네트워크, 보안 전부 직접 관리</li>
+</ul>
+</li>
+<li><b>장점</b>
+<ul>
+<li>데이터와 보안 통제력이 높음</li>
+<li>장기간 운영 시 비용 절감 가능</li>
+<li>금융, 제조 등 규제가 강한 산업에 적합</li>
+</ul>
+</li>
+<li><b>단점</b>
+<ul>
+<li>초기 비용이 매우 큼 (서버, 스토리지, 네트워크 장비 등)</li>
+<li>서버/보안 전문 인력이 필요</li>
+<li>확장 시 추가 장비 구매 필요</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2>서버 임대 (호스팅, IDC)</h2>
+<ul>
+<li><b>특징</b>
+<ul>
+<li>데이터센터(IDC)에서 서버를 빌려 쓰거나, 직접 구매한 서버를 IDC에 맡김(코로케이션)</li>
+<li>매월 일정 금액으로 운영 가능</li>
+</ul>
+</li>
+<li><b>장점</b>
+<ul>
+<li>고정 비용으로 예측 가능</li>
+<li>IDC 수준의 안정적인 회선/전력 제공</li>
+<li>초기 투자 부담이 온프레미스보다 적음</li>
+</ul>
+</li>
+<li><b>단점</b>
+<ul>
+<li>클라우드만큼 유연하지 않음</li>
+<li>장비 노후화 시 교체 비용 발생</li>
+<li>업체에 따라 SLA 품질 차이</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2>비교표</h2>
+<div>
+<div>구분클라우드온프레미스서버임대
+<table border="1" style="border-collapse: collapse; width: 100%;">
+<tbody>
+<tr>
+<td>초기비용</td>
+<td>낮음</td>
+<td>매우 높음</td>
+<td>중간</td>
+</tr>
+<tr>
+<td>운영비용</td>
+<td>변동/높음</td>
+<td>낮음(장기)</td>
+<td>고정/예측 가능</td>
+</tr>
+<tr>
+<td>확장성</td>
+<td>매우 높음</td>
+<td>낮음</td>
+<td>중간</td>
+</tr>
+<tr>
+<td>관리 책임</td>
+<td>클라우드사</td>
+<td>자체 IT팀</td>
+<td>IDC/호스팅사 일부</td>
+</tr>
+<tr>
+<td>보안/규제</td>
+<td>낮음(벤더 의존)</td>
+<td>매우 높음</td>
+<td>중간</td>
+</tr>
+<tr>
+<td>적합 대상</td>
+<td>스타트업/글로벌 서비스</td>
+<td>대기업/금융/제조</td>
+<td>중소기업/고정 트래픽</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<hr />
+<h2>✅ 정리</h2>
+<ul>
+<li><b>클라우드</b> &rarr; 빠른 시작과 확장성이 필요한 스타트업, 글로벌 서비스</li>
+<li><b>온프레미스</b> &rarr; 보안과 장기적 비용절감이 중요한 대기업, 금융/제조업</li>
+<li><b>서버 임대</b> &rarr; 클라우드가 부담스럽지만 온프레미스까지는 어려운 중소기업</li>
+</ul>
+<p>결국 <b>서비스 규모, 예산, 보안 요구사항</b>에 따라 최적의 선택이 달라집니다.<br />초기 스타트업은 클라우드, 장기 운영은 온프레미스, 중간 단계에서는 서버 임대가 현실적인 선택이 될 수 있습니다.</p></div>
+    <a class="button" href="https://ksp668.tistory.com/23" target="_blank" rel="noopener">티스토리 블로그에서 전체 글 보기</a>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>바이브코딩으로 웹게임 개발 해보기 (Github Vercel)</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: auto; padding: 2em; }
+        .title { font-size: 1.8em; font-weight: bold; margin-bottom: 0.5em; }
+        .meta { color: #777; margin-bottom: 1em; }
+        .summary { font-size: 1em; color: #333; margin-bottom: 2em; }
+        .badge { display:inline-block; font-size: 0.85em; padding: 2px 8px; border-radius: 999px; background:#eef; margin-right:8px; }
+        a.button { background: #0077cc; color: white; padding: 0.6em 1em; text-decoration: none; border-radius: 6px; }
+        a.button:hover { background: #005fa3; }
+    </style>
+</head>
+<body>
+    <div class="title">바이브코딩으로 웹게임 개발 해보기 (Github Vercel)</div>
+    <div class="meta"><span class="badge">티스토리</span>🗓 2025-08-28</div>
+    <div class="summary"><p style="background-color: #ffffff; color: #8a837e; text-align: left;">&nbsp;</p>
+<p><span style="color: #000000; background-color: #ffffff; letter-spacing: 0px;">전편에서 &lsquo;바이브 코딩&rsquo;이 뭔지 감을 잡았다면, 이번 편은 &ldquo;그걸로 뭘 만들까?&rdquo;를 실제로 굴려본 기록이다. 요즘은 복잡한 룰을 익혀야 하는 대작보다, 가볍게 들어와 금방 즐기고 친구랑 내기할 수 있는 사이트가 꾸준히 유입을 만든다고 본다. 그래서 방향을 웹게임 모음집으로 정했다. </span></p>
+<p>&nbsp;</p>
+<p><span style="color: #000000; background-color: #ffffff; letter-spacing: 0px;">왜 하필 웹게임일까? 간단하다. 링크 하나만 던지면 바로 들어와 플레이할 수 있다. 접근성이 좋으니 피드백 속도가 빠르고, 콘텐츠 관점에서도 짧은 체류 + 반복 방문 구조를 만들기 쉽다. </span></p>
+<p><span style="color: #000000; background-color: #ffffff; letter-spacing: 0px;">나는 목표를 이렇게 잡았다: 메뉴 &rarr; 게임 선택 &rarr; 플레이 &rarr; 결과 확인까지 1분 내외. 이 흐름을 만족하는 게임들로만 묶어보려 한다. </span></p>
+<p><figure class="imageblock alignCenter"><span><img height="401" src="https://blog.kakaocdn.net/dn/JXXGW/btsP87hoXlA/bd7jQ96CFuuTQHKJ7RSs7k/img.png" width="773" /></span></figure>
+</p>
+<p><span style="color: #000000; background-color: #ffffff; letter-spacing: 0px;">원칙은 하나 더 있다. 모든 과정은 ChatGPT를 통해 진행한다. 나는 아직 코드 한 줄도 쓰지 않는다. 지피티가 제안한 절차를 따라 하고, 결과를 확인하며 다음 스텝으로 넘어간다. </span></p>
+<p>&nbsp;</p>
+<p><span style="color: #000000; background-color: #ffffff; letter-spacing: 0px;">첫 게임은 반응속도 테스트로 결정. 클릭 한 번에 결과가 바로 보이도록 요구 조건을 정리해 전달했고 금방 뚝딱 만들어 줬다. 나는 코드한줄 적지않고, 사용환경 세팅도 안하는것 목표로 하기에, 피드백도 없었다.</span></p>
+<p><span style="color: #000000; background-color: #ffffff; letter-spacing: 0px;"> 그냥 올려보는거다 나는 일부러 비전공자/비실무자 관점으로 이 프로젝트를 본다. &ldquo;무슨 말인지 모르겠다&rdquo;는 마음으로 진행하면, 결국 남는 건 따라 하기 쉬운 절차뿐이다. </span></p>
+<p>&nbsp;</p>
+<p><span style="color: #000000; background-color: #ffffff; letter-spacing: 0px;">실제로 내가 한 일은 단순했다. Github와 Vercel을 회원가입을한다. 지피티가 건넨 파일을 GitHub에 올리고, Vercel에 연동한 것. 그러면 배포가 돌아가고, 링크가 생기고, 바로 공유가 가능해진다.업로드 과정에서 오류가 생기면 지피티한테 물어본다.</span></p>
+<p>&nbsp;</p>
+<p><span style="color: #000000; background-color: #ffffff; letter-spacing: 0px;"> 처음 업로드해보니 확실히 심심했다. 그래서 메인 메뉴를 요청했고, 바로 에임 테스트도 추가했다. 테스트 중간에 &ldquo;에임이 화면 밖으로 튕겨나가는&rdquo; 문제가 있었는데, 다시 물어보니 충돌/경계 처리를 손봐서 금세 해결. 두 게임이 메뉴 아래로 정리되고, 재시작 동선까지 붙으니 비로소 &ldquo;모음집&rdquo;의 느낌이 났다.</span></p>
+<p>&nbsp;</p>
+<p><span style="color: #000000; background-color: #ffffff; letter-spacing: 0px;"> 지피티가 남겨준 기술 메모는 이랬다(요지만 적어둔다). </span></p>
+<p><span style="color: #000000; background-color: #ffffff; letter-spacing: 0px;">Next.js로 뼈대를 잡고 각 게임은 독립 페이지처럼 구성</span></p>
+<p><span style="color: #000000; background-color: #ffffff; letter-spacing: 0px;"> 상태는 게임 내부에 가둬 리렌더 비용 최소화</span></p>
+<p><span style="color: #000000; background-color: #ffffff; letter-spacing: 0px;"> 공통 UI(헤더/푸터/메뉴)는 레이아웃로 묶어 재사용성 확보</span></p>
+<p><span style="color: #000000; background-color: #ffffff; letter-spacing: 0px;"> 초기엔 무거운 라이브러리 미루고 첫 접속 경험(TTI/입력 지연)</span><span style="color: #000000; background-color: #ffffff; letter-spacing: 0px;"> 우선 </span></p>
+<p><span style="color: #000000; background-color: #ffffff; letter-spacing: 0px;">페이지 타이틀/설명은 게임명 중심으로 통일</span><span style="color: #000000; background-color: #ffffff; letter-spacing: 0px;">해 추후 SEO 대비</span></p>
+<p>&nbsp;</p>
+<p><span style="color: #000000; background-color: #ffffff; letter-spacing: 0px;"> 정리하면, 이번 편에서 내가 얻은 건 두 가지다. 아이디어를 바로 손에 잡히는 결과물로 바꾸는 루프를 경험했다. 코드를 거의 쓰지 않고도 실행 가능한 프로토타입을 만든 방법을 익혔다. </span></p>
+<p>&nbsp;</p>
+<p><span style="color: #000000; background-color: #ffffff; letter-spacing: 0px;">물론 여기서 멈추진 않았다. 나는 이미 DB(리더보드) 연동과 검색/광고(SEO&middot;애드) 세팅까지 손을 대기 시작했지만, 그 부분은 흐름상 다음 포스팅으로 넘긴다. 앞으로도 게임을 계속 추가해 나갈 예정입니다</span><span style="color: #000000; background-color: #ffffff; letter-spacing: 0px;">. </span></p>
+<p>&nbsp;</p>
+<p><span style="color: #000000; background-color: #ffffff; letter-spacing: 0px;">이번 편의 질문은 하나. &ldquo;비전공자도 바이브 코딩으로 시작할 수 있나?&rdquo; 결론은 간단하다. 된다.</span></p>
+<div id="SE-8d0acd9d-f916-4af4-b0c2-48f6d94b6fc5" style="background-color: #ffffff; color: #8a837e; text-align: left;">
+<div>
+<div>
+<div>&nbsp;</div>
+</div>
+</div>
+</div>
+<div id="SE-ed1c4470-67f9-4824-953d-b11588e9ee56" style="background-color: #ffffff; color: #8a837e; text-align: left;">&nbsp;</div>
+<div style="background-color: #ffffff; color: #8a837e; text-align: left;"><br />
+<figure contenteditable="false" id="og_1756343579523"><a href="https://webgame-collection.vercel.app/" rel="noopener" target="_blank">
+<div class="og-image">&nbsp;</div>
+<div class="og-text">
+<p class="og-title">홈</p>
+<p class="og-desc">반응속도 테스트 신호에 반응해 클릭! 기록은 낮을수록 좋습니다.</p>
+<p class="og-host">webgame-collection.vercel.app</p>
+</div>
+</a></figure>
+<p>&nbsp;</p>
+</div>
+<div id="SE-55d148c1-113e-4049-8e80-26810b86ec19" style="background-color: #ffffff; color: #8a837e; text-align: left;">
+<div>
+<div>
+<div>
+<p>&nbsp;</p>
+</div>
+</div>
+</div>
+<figure contenteditable="false" id="og_1756343585071"><a href="https://blog.naver.com/rudtn668/223986241747" rel="noopener" target="_blank">
+<div class="og-image">&nbsp;</div>
+<div class="og-text">
+<p class="og-title">바이브코딩으로 웹게임 개발 (Github + Vercel)</p>
+<p class="og-desc">전편에서 &lsquo;바이브 코딩&rsquo;이 어떤 건지 감을 잡았다면, 이번 편은 &ldquo;그걸로 뭘 만들까?&rdquo;를 실제로 시도해 ...</p>
+<p class="og-host">blog.naver.com</p>
+</div>
+</a></figure>
+<p>&nbsp;</p>
+</div>
+<p style="background-color: #ffffff; color: #8a837e; text-align: left;">&nbsp;</p></div>
+    <a class="button" href="https://ksp668.tistory.com/18" target="_blank" rel="noopener">티스토리 블로그에서 전체 글 보기</a>
+</body>
+</html>
