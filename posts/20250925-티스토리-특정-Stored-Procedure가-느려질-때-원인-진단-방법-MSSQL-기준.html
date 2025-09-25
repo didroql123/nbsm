@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>특정 Stored Procedure가 느려질 때 원인 진단 방법 (MSSQL 기준)</title>
+  <meta name="robots" content="index,follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; max-width: 800px; margin: auto; padding: 2em; }
+    .title { font-size: 1.8em; font-weight: 800; margin-bottom: 0.5em; }
+    .meta { color: #777; margin-bottom: 1em; }
+    .summary { font-size: 1em; color: #333; margin-bottom: 2em; }
+    .badge { display:inline-block; font-size: 0.85em; padding: 2px 8px; border-radius: 999px; background:#eef; margin-right:8px; }
+    .summary img { max-width: 100%; height: auto; }
+    a.button { background: #0077cc; color: white; padding: 0.6em 1em; text-decoration: none; border-radius: 6px; }
+    a.button:hover { background: #005fa3; }
+  </style>
+</head>
+<body>
+  <div class="title">특정 Stored Procedure가 느려질 때 원인 진단 방법 (MSSQL 기준)</div>
+  <div class="meta"><span class="badge">티스토리</span>🗓 2025-09-25</div>
+  <div class="summary"><p>ERP나 대규모 시스템을 운영하다 보면, <b>어제까지는 잘 돌던 SP(Stored Procedure)가 갑자기 느려지는 경우</b>가 자주 발생합니다.<br />이번 글에서는 제가 실무에서 경험한 <b>SP 성능 저하 원인 진단 방법</b>을 정리해보겠습니다.</p>
+<hr />
+<h2>1. 세션/프로세스 확인</h2>
+<p>먼저, 현재 어떤 쿼리가 오래 걸리고 있는지 확인해야 합니다.</p>
+<div>
+<div>
+<div>&nbsp;</div>
+</div>
+<div><span><span><span>오래 걸리고 있는 세션 확인</span></span><span> </span></span></div>
+<div>&nbsp;</div>
+<div><span><span><span>SELECT</span></span><span> spid, blocked, waittype, waittime, lastwaittype, program_name, cmd, cpu, physical_io </span><span><span>FROM</span></span><span> sys.sysprocesses </span><span><span>WHERE</span></span><span> spid </span><span><span>&gt;</span></span><span> </span><span><span>50</span></span><span> </span><span><span>AND</span></span><span> blocked </span><span><span>&lt;&gt;</span></span><span> </span><span><span>0</span></span><span>; </span></span></div>
+</div>
+<ul>
+<li>blocked: 다른 세션에 의해 대기 중인 경우</li>
+<li>waittype / lastwaittype: 어떤 리소스를 기다리고 있는지 확인 가능</li>
+</ul>
+<p>  여기서 <b>락(Block)</b> 때문인지, <b>단순 실행 계획 문제</b>인지 1차로 분리할 수 있습니다.</p>
+<hr />
+<h2>2. 실행 계획(Execution Plan) 분석</h2>
+<p>SP가 느려졌다면 대부분 <b>실행 계획(Execution Plan)</b> 문제일 확률이 큽니다.<br />특히, 통계가 오래되어 <b>비효율적인 인덱스 탐색</b>을 선택했을 수 있습니다.</p>
+<div>
+<div>
+<div><span style="letter-spacing: 0px;">SSMS에서 </span><b>실행 계획 보기 (Ctrl + M)</b><span style="letter-spacing: 0px;"> 를 통해</span></div>
+</div>
+</div>
+<p>&rarr; <b>Index Seek</b> 대신 <b>Table Scan</b>이 발생하는지 확인해야 합니다.</p>
+<hr />
+<h2>3. 통계/인덱스 점검</h2>
+<p>실행 계획이 꼬였을 경우 다음 작업을 고려합니다.</p>
+<div>
+<div>
+<div>&nbsp;</div>
+</div>
+<div><span><span><span>인덱스 통계 업데이트</span></span><span> </span><span><span>UPDATE</span></span><span> STATISTICS 테이블명; </span><span><span>-- 전체 DB 인덱스 통계 갱신</span></span><span> </span><span><span>EXEC</span></span><span> sp_updatestats; </span></span></div>
+</div>
+<p>  ERP 시스템은 데이터가 하루에도 수만 건 쌓이다 보니, <b>주기적인 통계 갱신 작업</b>이 필수입니다.</p>
+<hr />
+<h2>4. 캐시된 실행계획(Plan Cache) 문제</h2>
+<p>SP는 보통 <b>한 번 실행된 실행 계획을 캐시에 저장</b>해 재사용합니다.<br />하지만 특정 파라미터로 인해 잘못된 실행 계획이 캐싱되면 이후 호출도 전부 느려집니다.</p>
+<p>이럴 때는 <b>Recompile</b>로 해결할 수 있습니다.</p>
+<div>
+<div>
+<div>&nbsp;</div>
+</div>
+<div><span><span><span>특정 SP 실행 계획 재컴파일</span></span><span> </span><span><span>EXEC</span></span><span> sp_recompile N</span><span><span>'스키마명.프로시저명'</span></span><span>; </span></span></div>
+</div>
+<p>  저도 ERP SP가 하루종일 안돌다가 sp_recompile 한 번으로 바로 정상화된 경험이 있습니다.</p>
+<hr />
+<h2>5. 잠금(Lock) / Deadlock 확인</h2>
+<p>실행 계획이 정상인데도 느리다면, <b>동시 접속자가 많은 상황에서 잠금 문제</b>가 발생했을 수 있습니다.</p>
+<div>
+<div>
+<div>&nbsp;</div>
+</div>
+<div><span><span><span>잠금 확인</span></span><span> </span><span><span>SELECT</span></span><span> request_session_id </span><span><span>AS</span></span><span> spid, resource_type, resource_description, request_mode, request_status </span><span><span>FROM</span></span><span> sys.dm_tran_locks; </span></span></div>
+</div>
+<p>특정 테이블이나 인덱스에 락이 걸려 다른 세션을 전부 기다리게 하는 경우가 많습니다.</p>
+<hr />
+<h2>6. 최적화/튜닝 포인트</h2>
+<ul>
+<li>SELECT * 지양 &rarr; 필요한 컬럼만 가져오기</li>
+<li>NOLOCK 옵션 검토 (조회 위주일 경우)</li>
+<li>불필요한 JOIN 제거</li>
+<li>조건절(WHERE)에 인덱스 컬럼이 잘 사용되는지 확인</li>
+</ul>
+<hr />
+<h2>✅ 정리</h2>
+<p>Stored Procedure가 갑자기 느려졌을 때는 보통 다음 네 가지 중 하나입니다:</p>
+<ol>
+<li><b>실행 계획 꼬임</b> &rarr; sp_recompile</li>
+<li><b>인덱스/통계 문제</b> &rarr; UPDATE STATISTICS</li>
+<li><b>잠금(Block) 문제</b> &rarr; 세션/Lock 확인</li>
+<li><b>잘못된 쿼리 구조</b> &rarr; 실행 계획 튜닝</li>
+</ol>
+<p>  실무에서는 <b>즉시 대응(recompile)</b> + <b>근본 원인(인덱스/쿼리 튜닝)</b> 두 가지를 병행하는 게 중요합니다.</p></div>
+  <a class="button" href="https://ksp668.tistory.com/24" target="_blank" rel="noopener">티스토리 블로그에서 전체 글 보기</a>
+</body>
+</html>
