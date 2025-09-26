@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>1U vs 2U 서버, Silver vs Gold CPU</title>
+  <meta name="robots" content="index,follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; max-width: 800px; margin: auto; padding: 2em; }
+    .title { font-size: 1.8em; font-weight: 800; margin-bottom: 0.5em; }
+    .meta { color: #777; margin-bottom: 1em; }
+    .summary { font-size: 1em; color: #333; margin-bottom: 2em; }
+    .badge { display:inline-block; font-size: 0.85em; padding: 2px 8px; border-radius: 999px; background:#eef; margin-right:8px; }
+    .summary img { max-width: 100%; height: auto; }
+    a.button { background: #0077cc; color: white; padding: 0.6em 1em; text-decoration: none; border-radius: 6px; }
+    a.button:hover { background: #005fa3; }
+  </style>
+</head>
+<body>
+  <div class="title">1U vs 2U 서버, Silver vs Gold CPU</div>
+  <div class="meta"><span class="badge">티스토리</span>🗓 2025-09-26</div>
+  <div class="summary"><p>서버를 새로 구축하거나 업그레이드할 때 가장 고민되는 부분이 <b>서버 사양</b>입니다.<br />저도 실제 업무에서 300~500명 ERP 동시 접속 환경을 고려하면서, <b>1U vs 2U 서버, Intel Silver vs Gold CPU</b> 그리고 <b>MSSQL 라이선스 비용</b>까지 검토한 경험이 있습니다.<br />이번 글에서는 그 내용을 정리해보겠습니다.</p>
+<hr />
+<h2>1. 1U vs 2U 서버 차이</h2>
+<h3>1U 서버</h3>
+<ul>
+<li>장점: 공간 절약, 가격 저렴, 발열/소음 낮음</li>
+<li>단점: 확장성 부족 (메모리/스토리지 추가 한계)</li>
+</ul>
+<h3>2U 서버</h3>
+<ul>
+<li>장점: 확장성 좋음 (디스크 베이, 메모리 슬롯 넉넉)</li>
+<li>단점: 크기/전력 소모 증가, 초기 비용 다소 높음</li>
+</ul>
+<p>  <b>ERP는 데이터베이스 성능 + 안정성이 중요</b>하므로,<br />동시 사용자 수가 많다면 <b>2U 서버</b>가 더 유리합니다.</p>
+<hr />
+<h2>2. Intel Xeon Silver vs Gold CPU</h2>
+<h3>Xeon Silver (보급형)</h3>
+<ul>
+<li>코어 수 많음 (16코어 이상 선택 가능)</li>
+<li>클럭 낮음 (성능은 다소 부족)</li>
+<li>ERP에서 <b>동시 접속자 많고 단순 트랜잭션</b> 처리 위주면 Silver도 충분</li>
+</ul>
+<h3>Xeon Gold (고급형)</h3>
+<ul>
+<li>코어 수 적음 (8~12코어)</li>
+<li>클럭 높음 (단일 처리 속도 우수)</li>
+<li><b>MSSQL 서버 라이선스 비용 절감 효과</b> (코어 단위 라이선스)</li>
+<li>복잡한 연산/집계/리포트 성능에서 확실히 빠름</li>
+</ul>
+<p>  ERP DB 서버라면 <b>Gold (고클럭, 코어 적음)</b> 쪽이 유리합니다.<br />특히 MSSQL은 <b>코어 단위 라이선스</b>라서, Silver로 코어만 많은 CPU를 선택하면 <b>비용 폭탄</b> 맞을 수 있습니다.</p>
+<hr />
+<h2>3. ERP 사용자 300~500명 기준 사양 예시</h2>
+<ul>
+<li><b>웹 서버 (1U 추천)</b>
+<ul>
+<li>CPU: Xeon Silver, 8~12코어</li>
+<li>메모리: 32GB 이상</li>
+<li>역할: 화면 렌더링, API 요청 처리</li>
+</ul>
+</li>
+<li><b>DB 서버 (2U 추천)</b>
+<ul>
+<li>CPU: Xeon Gold, 8~12코어 (고클럭)</li>
+<li>메모리: 128GB 이상</li>
+<li>스토리지: RAID 10 구성 (SSD + 여유 공간 확보)</li>
+<li>역할: MSSQL, 데이터 트랜잭션 집중 처리</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2>4. MSSQL 라이선스 비용 고려</h2>
+<ul>
+<li><b>코어 라이선스 방식</b>: 코어 수에 따라 비용 증가</li>
+<li>예: 16코어 Silver &rarr; 라이선스 비용이 Gold보다 훨씬 비쌈</li>
+<li>따라서 ERP DB 서버는 <b>적은 코어 + 고클럭 CPU (Gold)</b> 선택이 <b>가성비</b></li>
+</ul>
+<hr />
+<h2>5. 실무 결론</h2>
+<ul>
+<li><b>웹 서버</b>: 1U + Silver CPU (코어 다수, 가성비)</li>
+<li><b>DB 서버</b>: 2U + Gold CPU (코어 적지만 고성능, 라이선스 절약)</li>
+<li><b>백업 서버</b>: 2U 보급형, 성능보다는 안정성/이중화 목적</li>
+</ul>
+<p>  결국 ERP 서버 선택에서 핵심은 <b>MSSQL 라이선스까지 고려한 총비용</b>입니다.<br />CPU만 보고 Silver가 싸다고 선택하면, 라이선스 비용 때문에 전체 TCO가 더 올라갈 수 있습니다.</p>
+<hr />
+<h2>✅ 정리</h2>
+<ol>
+<li>1U는 공간 절약, 2U는 확장성 &rarr; ERP DB 서버는 2U가 안정적</li>
+<li>Silver는 코어 많고 느림, Gold는 코어 적고 빠름 &rarr; MSSQL은 Gold가 가성비</li>
+<li>300~500명 ERP 환경 기준:
+<ul>
+<li>웹 서버: 1U + Silver</li>
+<li>DB 서버: 2U + Gold</li>
+<li>백업 서버: 2U 보급형</li>
+</ul>
+</li>
+</ol></div>
+  <a class="button" href="https://ksp668.tistory.com/25" target="_blank" rel="noopener">티스토리 블로그에서 전체 글 보기</a>
+</body>
+</html>
