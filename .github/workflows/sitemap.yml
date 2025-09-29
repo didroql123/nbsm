@@ -1,32 +1,48 @@
-name: Generate and Deploy Sitemap
+name: Generate blog index & sitemaps
 
 on:
   schedule:
-    - cron: '0 */6 * * *'  # 6시간마다 실행
-  workflow_dispatch:
+    # 매일 00:00 KST == 15:00 UTC
+    - cron: "0 15 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: generate-site
+  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: "3.11"
 
-      - name: Install dependencies
+      - name: Install deps
         run: |
-          pip install feedparser
-      
-      - name: Generate sitemap
-        run: python sitemap_generator.py
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-      - name: Commit and push sitemap
+      - name: Generate pages (index/posts/sitemaps/robots)
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add index.html robots.txt sitemap.xml sitemap-1.xml sitemap_index.xml posts/*.html
-          git commit -m "🔄 자동 생성된 블로그 페이지 및 사이트맵 업데이트" || echo "No changes to commit"
-          git push
+          python sitemap_generator.py
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain)" ]; then
+            git add -A
+            git commit -m "chore: nightly build (KST 00:00)"
+            git push
+          else
+            echo "No changes to commit."
+          fi
