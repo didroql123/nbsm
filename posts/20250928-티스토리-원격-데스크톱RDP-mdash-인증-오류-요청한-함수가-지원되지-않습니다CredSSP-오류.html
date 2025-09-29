@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>원격 데스크톱(RDP) &amp;mdash; 인증 오류: 요청한 함수가 지원되지 않습니다(CredSSP 오류)</title>
+  <meta name="robots" content="index,follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; max-width: 800px; margin: auto; padding: 2em; }
+    .title { font-size: 1.8em; font-weight: 800; margin-bottom: 0.5em; }
+    .meta { color: #777; margin-bottom: 1em; }
+    .summary { font-size: 1em; color: #333; margin-bottom: 2em; }
+    .badge { display:inline-block; font-size: 0.85em; padding: 2px 8px; border-radius: 999px; background:#eef; margin-right:8px; }
+    .summary img { max-width: 100%; height: auto; }
+    a.button { background: #0077cc; color: white; padding: 0.6em 1em; text-decoration: none; border-radius: 6px; }
+    a.button:hover { background: #005fa3; }
+  </style>
+</head>
+<body>
+  <div class="title">원격 데스크톱(RDP) &amp;mdash; 인증 오류: 요청한 함수가 지원되지 않습니다(CredSSP 오류)</div>
+  <div class="meta"><span class="badge">티스토리</span>🗓 2025-09-28</div>
+  <div class="summary"><p>원격 데스크톱 접속 시 아래와 같은 오류 메시지 뜬 적 있나요?</p>
+<p><figure class="imageblock alignCenter"><span><img height="279" src="https://blog.kakaocdn.net/dn/qbzZZ/btsQLOfY0Tg/VpAq9WsFaOR9EUrAcY11Ck/img.png" width="742" /></span></figure>
+</p>
+<blockquote>
+<p>인증 오류가 발생했습니다. 요청한 함수가 지원되지 않습니다.<br />CredSSP 암호화 오라클을 수정 때문일 수 있습니다.</p>
+</blockquote>
+<p>최근 윈도우 보안 업데이트(또는 패치 미적용) 때문에 <b>클라이언트와 서버 간 CredSSP(자격 증명 보안 공급자)</b> 버전이 맞지 않아서 생기는 문제입니다. 수정 방법을 빠르게 정리합니다 &mdash; 긴급 임시방편부터 권장(안전) 방법까지 그대로 붙여넣어 쓰실 수 있게 정리했어요.</p>
+<hr />
+<h2>원인 요약</h2>
+<ul>
+<li>클라이언트/서버 중 한쪽만 보안 패치가 되어 있어 CredSSP 규약 불일치 발생</li>
+<li>그룹 정책 또는 레지스트리에서 암호화 오라클 정책이 엄격하게 설정되어 있음</li>
+</ul>
+<hr />
+<h2>해결 방법 (우선순위로 정리)</h2>
+<h3>1) <b>권장 &mdash; 서버/클라이언트 모두 최신 업데이트 적용</b></h3>
+<p>가장 안전한 방법입니다. Windows Update에서 최신 보안 패치를 모두 설치한 뒤 재부팅하고 RDP 재시도하세요.</p>
+<hr />
+<h3>2) <b>임시: 클라이언트에서 정책 낮추기 (긴급 접속용)</b></h3>
+<blockquote>
+<p>보안 위험이 있으니 회사/중요 시스템이면 사용 전 관리자와 상의하세요.</p>
+</blockquote>
+<ol>
+<li>Win + R &rarr; gpedit.msc 실행</li>
+<li>컴퓨터 구성 &rarr; 관리 템플릿 &rarr; 시스템 &rarr; 자격 증명 위임 이동</li>
+<li><b>암호화 오라클 수정(Encryption Oracle Remediation)</b> 더블클릭</li>
+<li>설정을 <b>사용(Enabled)</b> 으로 바꾸고 <b>보호 수준(Protection Level)</b> 을 <b>취약(Vulnerable)</b> 로 선택</li>
+<li>gpupdate /force 실행 후 RDP 재접속</li>
+</ol>
+<hr />
+<h3>3) <b>레지스트리로 변경 (정책 편집 불가한 경우)</b></h3>
+<ol>
+<li>Win + R &rarr; regedit 실행</li>
+<li>경로:</li>
+</ol>
+<div>
+<div>
+<div>&nbsp;</div>
+</div>
+<div><span><span>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\</span><span><span>System</span></span><span>\CredSSP\Parameters </span></span></div>
+</div>
+<ol>
+<li>AllowEncryptionOracle (DWORD) 값 생성/수정:</li>
+</ol>
+<ul>
+<li>0 = 기본(차단)</li>
+<li>1 = 호환(경고)</li>
+<li>2 = 취약(허용) &larr; <b>긴급용</b></li>
+</ul>
+<p>변경 후 재부팅 또는 정책 갱신 후 RDP 재시도.</p>
+<hr />
+<h3>4<b>) CMD(관리자)로 레지스트리 추가</b></h3>
+<p>긴급하게 원격접속을 열어야 할 때 가장 빠른 방법입니다. 아래 명령을 관리자 권한으로 실행하고 PC를 재부팅하세요.</p>
+<ul>
+<li><b>관리자 CMD 실행 후 입력</b></li>
+</ul>
+<div>
+<div>
+<div>&nbsp;</div>
+</div>
+<div><span>reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\CredSSP\Parameters" /v AllowEncryptionOracle /t REG_DWORD /d 2 /f</span></div>
+<div>&nbsp;</div>
+</div>
+<ul>
+<li><b>재부팅</b><br />변경 사항 적용을 위해 재부팅하세요. 이 설정은 AllowEncryptionOracle=2 로 설정하여 취약 모드(허용)로 만듭니다.</li>
+</ul>
+<h2>보안 주의사항</h2>
+<ul>
+<li>취약 또는 AllowEncryptionOracle=2 설정은 <b>자격 증명 탈취 위험</b>을 증가시킵니다. 임시로만 사용하고, 가능한 빨리 서버/클라이언트 패치로 복구하세요.</li>
+<li>회사 환경이라면 보안팀/시스템 담당자에게 먼저 보고 후 진행하세요.</li>
+</ul>
+<hr />
+<h2>문제 재발 방지 팁</h2>
+<ul>
+<li>정기적으로 Windows 보안 업데이트 적용(WSUS 또는 중앙관리)</li>
+<li>RDP 사용 시 네트워크 레벨 인증(NLA) 적용 및 VPN 내부망 통해서만 접속</li>
+<li>원격 데스크톱 게이트웨이(RD Gateway) 도입 고려</li>
+</ul>
+<hr />
+<h2>마무리</h2>
+<p>긴급하게 접속해야 한다면 CMD로 레지스트리 추가 &rarr; 재부팅 방법으로 빠르게 해결할 수 있습니다.<br />하지만 근본적 해법은 <b>패치 적용</b>이니, 접속 확보 후 바로 보안 복구 작업(업데이트 및 레지리셋)을 진행하세요.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p></div>
+  <a class="button" href="https://ksp668.tistory.com/27" target="_blank" rel="noopener">티스토리 블로그에서 전체 글 보기</a>
+</body>
+</html>
