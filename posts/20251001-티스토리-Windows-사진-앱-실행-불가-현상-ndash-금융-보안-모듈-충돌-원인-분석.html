@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Windows 사진 앱 실행 불가 현상 &amp;ndash; 금융 보안 모듈 충돌 원인 분석</title>
+  <meta name="robots" content="index,follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; max-width: 800px; margin: auto; padding: 2em; }
+    .title { font-size: 1.8em; font-weight: 800; margin-bottom: 0.5em; }
+    .meta { color: #777; margin-bottom: 1em; }
+    .summary { font-size: 1em; color: #333; margin-bottom: 2em; }
+    .badge { display:inline-block; font-size: 0.85em; padding: 2px 8px; border-radius: 999px; background:#eef; margin-right:8px; }
+    .summary img { max-width: 100%; height: auto; }
+    a.button { background: #0077cc; color: white; padding: 0.6em 1em; text-decoration: none; border-radius: 6px; }
+    a.button:hover { background: #005fa3; }
+  </style>
+</head>
+<body>
+  <div class="title">Windows 사진 앱 실행 불가 현상 &amp;ndash; 금융 보안 모듈 충돌 원인 분석</div>
+  <div class="meta"><span class="badge">티스토리</span>🗓 2025-10-01</div>
+  <div class="summary"><p>최근 Windows 환경에서 <b>기본 사진 앱(Photos)</b> 이 실행되지 않는 현상을 확인했습니다.<br />일반적으로 앱 손상이나 캐시 문제로 오해하기 쉽지만, 이번 사례는 <b>외부 보안 모듈 충돌</b>이 주요 원인이었습니다.</p>
+<hr />
+<h2>1. 증상 (Symptoms)</h2>
+<ul>
+<li>JPEG, PNG 등 이미지 파일 더블 클릭 시 앱이 실행되지 않음</li>
+<li>작업 관리자(Task Manager)에서는 PhotosApp.exe 프로세스가 잠시 생성 후 즉시 종료</li>
+<li>동일 파일을 다른 뷰어(예: IrfanView, Paint)에서 열 경우 정상 동작</li>
+</ul>
+<p>즉, <b>특정 앱(Photos)만 차단되는 상태</b>가 발생했습니다.</p>
+<hr />
+<h2>2. 원인 분석 (Root Cause)</h2>
+<p>작업 관리자를 통해 백그라운드 프로세스를 확인한 결과, 다수의 금융/보안 모듈이 상주 중이었습니다.</p>
+<h3>주요 보안 모듈</h3>
+<ul>
+<li><b>TouchEn nxKey / nxWeb / nxWeb Policy</b> : 키보드 입력 암호화 및 웹 보안 모듈</li>
+<li><b>ImageSAFER</b> : 화면 캡처 방지 모듈</li>
+<li><b>VPWallet Service</b> : 전자지갑 및 결제 모듈</li>
+<li><b>WIZVERA Delfino</b> : 전자서명 및 결제 보안 모듈</li>
+<li><b>nProtect Online Security, AhnLab Safe Transaction</b> : 금융 보안 통합 모듈</li>
+</ul>
+<p>이 중 특히 <b>TouchEn</b> 계열 프로그램은 <b>화면 캡처 차단 및 입력 후킹</b> 기능을 수행하며,<br />해당 과정에서 Windows UWP 앱(예: Photos) 실행을 가로막는 경우가 발생합니다.</p>
+<hr />
+<h2>3. 해결 방법 (Resolution)</h2>
+<p>본 사례에서는 <b>TouchEn 모듈 제거</b> 이후 사진 앱이 정상 실행되었습니다.</p>
+<h3>단계별 조치</h3>
+<ol>
+<li><b>작업 관리자 확인</b>
+<ul>
+<li>백그라운드에서 과도한 메모리를 점유하는 금융 보안 모듈 확인</li>
+<li>(예: TouchEn nxKey, VPWallet, ImageSAFER 등)</li>
+</ul>
+</li>
+<li><b>프로그램 제거</b>
+<ul>
+<li>제어판 &rarr; 프로그램 및 기능 &rarr; TouchEn 계열 삭제</li>
+<li>삭제 이후 Photos 앱 즉시 정상 동작 확인</li>
+</ul>
+</li>
+<li><b>대체 방안</b>
+<ul>
+<li>금융 사이트 이용 시, TouchEn 등은 접속 시 자동으로 재설치 가능</li>
+<li>필요 시에만 설치하여 사용하고, 일상적인 PC 사용 환경에서는 제거 권장</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2>4. 결론 (Conclusion)</h2>
+<p>Windows 기본 앱 실행 불가 현상은 단순히 앱 손상이 아니라,<br /><b>외부 보안 모듈 충돌</b>에서 비롯될 수 있습니다.</p>
+<p>특히 <b>TouchEn, ImageSAFER, WIZVERA, VPWallet</b> 등은<br />보안 강화를 목적으로 설치되지만, 일반 앱의 정상 실행을 방해할 가능성이 존재합니다.</p>
+<p>따라서,</p>
+<ul>
+<li>업무/개인 PC에서는 <b>불필요한 보안 모듈 제거</b></li>
+<li>금융/관공서 사이트 이용 시에만 <b>재설치</b><br />를 통해 안정적인 시스템 운영이 가능합니다.</li>
+</ul></div>
+  <a class="button" href="https://ksp668.tistory.com/29" target="_blank" rel="noopener">티스토리 블로그에서 전체 글 보기</a>
+</body>
+</html>
