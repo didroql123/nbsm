@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>FortiClient VPN 탭 사라짐 해결 방법 (Zero Trust Fabric만 뜨는 경우)</title>
+  <meta name="robots" content="index,follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; max-width: 800px; margin: auto; padding: 2em; }
+    .title { font-size: 1.8em; font-weight: 800; margin-bottom: 0.5em; }
+    .meta { color: #777; margin-bottom: 1em; }
+    .summary { font-size: 1em; color: #333; margin-bottom: 2em; }
+    .badge { display:inline-block; font-size: 0.85em; padding: 2px 8px; border-radius: 999px; background:#eef; margin-right:8px; }
+    .summary img { max-width: 100%; height: auto; }
+    a.button { background: #0077cc; color: white; padding: 0.6em 1em; text-decoration: none; border-radius: 6px; }
+    a.button:hover { background: #005fa3; }
+  </style>
+</head>
+<body>
+  <div class="title">FortiClient VPN 탭 사라짐 해결 방법 (Zero Trust Fabric만 뜨는 경우)</div>
+  <div class="meta"><span class="badge">티스토리</span>🗓 2025-10-02</div>
+  <div class="summary"><p>원격 접속(SSL-VPN)을 위해 FortiClient를 사용하다 보면,<br />어느 날 갑자기 <b>VPN 탭이 사라지고 Zero Trust Fabric 화면만 뜨는 경우</b>가 있습니다.<br />기존에는 잘 쓰던 환경인데 갑자기 VPN 메뉴가 보이지 않아 당황스러우셨을 거예요.</p>
+<hr />
+<h2>  증상</h2>
+<ul>
+<li>FortiClient 실행 시 <b>VPN 탭이 보이지 않고</b><br />Zero Trust Telemetry / Zero Trust Fabric 등록 화면만 출력됨</li>
+<li>기존에 정상적으로 접속하던 SSL-VPN 연결 불가</li>
+<li>레지스트리 확인 시 vpn_tab_hidden 값이 1로 설정되어 있음</li>
+</ul>
+<p><figure class="imageblock alignCenter"><span><img height="599" src="https://blog.kakaocdn.net/dn/XGNkj/btsQRA92UX7/Jp3AKdghQRkyVktXOTU1a1/img.png" width="824" /></span></figure>
+</p>
+<hr />
+<h2> ️ 원인</h2>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter"><span><img height="409" src="https://blog.kakaocdn.net/dn/cROgJj/btsQODtGBPU/4rDXUP7E5DDwm0kg715ft0/img.png" width="154" /></span></figure>
+</p>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter"><span><img height="34" src="https://blog.kakaocdn.net/dn/NICtF/btsQRx6xAuL/SsdORxYjfpWosPAIjGv5o0/img.png" width="471" /></span></figure>
+</p>
+<p>&nbsp;</p>
+<p>FortiClient는 설치 모드와 정책에 따라 VPN 탭을 숨길 수 있습니다.</p>
+<ul>
+<li>자동 업데이트나 정책 적용 과정에서 <b>VPN 메뉴가 비활성화</b>된 것</li>
+<li>레지스트리 상에서 vpn_tab_hidden = 1 로 변경되어 VPN 메뉴가 숨겨진 상태</li>
+</ul>
+<hr />
+<h2>✅ 해결 방법</h2>
+<h3>1. 관리자 권한으로 레지스트리 수정</h3>
+<ol>
+<li>regedit &rarr; <b>관리자 권한으로 실행</b></li>
+<li>경로 이동:</li>
+<li>
+<div>
+<div>&nbsp;</div>
+</div>
+<div><span><span>HKEY_LOCAL_MACHINE\SOFTWARE\Fortinet\FortiClient\FA_ESNAC </span></span></div>
+</li>
+<li>오른쪽 값 중에서
+<ul>
+<li>vpn_tab_hidden &rarr; 0</li>
+<li>ztna_tab_hidden &rarr; 0<br />으로 수정</li>
+</ul>
+</li>
+<li>FortiClient 종료 후 재실행 &rarr; VPN 탭 복구 확인</li>
+</ol>
+<hr />
+<h3>2. 명령어로 강제 수정 (관리자 CMD/PowerShell)</h3>
+<p>레지스트리 권한 문제로 직접 수정이 안 될 경우,<br />관리자 권한 CMD에서 아래 명령 실행:</p>
+<div>
+<div>
+<div>&nbsp;</div>
+</div>
+<div>
+<pre class="bash" id="code_1758860616403"><code>reg add "HKLM\SOFTWARE\Fortinet\FortiClient\FA_ESNAC" /v vpn_tab_hidden /t REG_DWORD /d 0 /f
+reg add "HKLM\SOFTWARE\Fortinet\FortiClient\FA_ESNAC" /v ztna_tab_hidden /t REG_DWORD /d 0 /f</code></pre>
+</div>
+</div>
+<hr />
+<h3>3. FortiClient 재설치 (대안)</h3>
+<ul>
+<li>Fortinet 공식 사이트에서 <b>FortiClient VPN 전용 버전</b> 다운로드 후 재설치</li>
+<li>VPN 전용 버전은 Telemetry/EMS 메뉴가 없고 VPN 메뉴만 표시됨</li>
+</ul>
+<hr />
+<h2>  정리</h2>
+<ul>
+<li>갑자기 VPN 탭이 사라진 이유는 <b>FortiClient 설정(레지스트리)에서 VPN 메뉴가 숨김 처리</b> 되었기 때문</li>
+<li>vpn_tab_hidden 값을 0으로 변경하면 VPN 메뉴가 다시 표시됨</li>
+<li>재설치 대신 레지스트리 수정으로 간단히 해결 가능</li>
+</ul></div>
+  <a class="button" href="https://ksp668.tistory.com/30" target="_blank" rel="noopener">티스토리 블로그에서 전체 글 보기</a>
+</body>
+</html>
