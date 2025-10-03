@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Microsoft 계정 변경 및 자동 로그인 설정 방법</title>
+  <meta name="robots" content="index,follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; max-width: 800px; margin: auto; padding: 2em; }
+    .title { font-size: 1.8em; font-weight: 800; margin-bottom: 0.5em; }
+    .meta { color: #777; margin-bottom: 1em; }
+    .summary { font-size: 1em; color: #333; margin-bottom: 2em; }
+    .badge { display:inline-block; font-size: 0.85em; padding: 2px 8px; border-radius: 999px; background:#eef; margin-right:8px; }
+    .summary img { max-width: 100%; height: auto; }
+    a.button { background: #0077cc; color: white; padding: 0.6em 1em; text-decoration: none; border-radius: 6px; }
+    a.button:hover { background: #005fa3; }
+  </style>
+</head>
+<body>
+  <div class="title">Microsoft 계정 변경 및 자동 로그인 설정 방법</div>
+  <div class="meta"><span class="badge">티스토리</span>🗓 2025-10-03</div>
+  <div class="summary"><p>윈도우를사용하다 보면 처음 연결한 <b>Microsoft 계정</b>을 다른 계정으로 바꾸고 싶을 때가 있습니다.<br />예를 들어, 기존에 사용하던 계정을 지우고 새로운 계정으로 교체하고 싶다면 어떻게 해야 할까요?<br />오늘은 <b>사용자 계정 교체 &rarr; 기존 계정 삭제 &rarr; 자동 로그인 설정</b>까지 전 과정을 정리해 보겠습니다.</p>
+<hr />
+<h2>&nbsp;1. 새 계정 추가하기</h2>
+<ol>
+<li><b>설정 &rarr; 계정 &rarr; 가족 및 다른 사용자</b> 메뉴로 이동합니다.</li>
+<li><b>다른 사용자 추가</b> 클릭 &rarr; 새 Microsoft 계정 이메일 입력</li>
+<li>생성한 계정을 선택 &rarr; <b>계정 유형 변경 &rarr; 관리자</b>로 전환<br />&gt; 이렇게 해야 기존 계정을 삭제해도 관리 권한을 잃지 않습니다.</li>
+</ol>
+<p><figure class="imageblock alignCenter"><span><img height="1022" src="https://blog.kakaocdn.net/dn/Hc1K5/btsQStxndd3/a0TjWiKjWv2PoUs9mINPm1/img.png" width="1912" /></span></figure>
+</p>
+<hr />
+<h2>&nbsp;2. 기존 계정 데이터 백업</h2>
+<p>계정을 삭제하면 해당 계정의 사용자 폴더(C:\Users\계정명)도 함께 사라집니다.<br />따라서 중요한 파일은 반드시 미리 복사해두세요.</p>
+<ul>
+<li><b>바탕화면</b></li>
+<li><b>문서 / 다운로드 / 사진</b></li>
+<li><b>브라우저 즐겨찾기 및 설정(AppData 포함)</b></li>
+</ul>
+<p>&nbsp;&gt; 필요 없는 데이터는 과감히 버리고, 꼭 필요한 자료만 정리해서 새 계정에 옮겨두면 깔끔합니다.</p>
+<hr />
+<h2>&nbsp;3. 기존 계정 삭제</h2>
+<ol>
+<li>다시 <b>설정 &rarr; 계정 &rarr; 가족 및 다른 사용자</b> 이동</li>
+<li>기존 계정 선택 &rarr; <b>제거</b> 클릭</li>
+<li><b>계정 및 데이터 삭제</b> 확인<br />&gt; 이 과정이 끝나면 새 계정만 남습니다.</li>
+</ol>
+<hr />
+<h2>&nbsp;4. 자동 로그인 설정 (선택)</h2>
+<p>매번 암호 입력이 귀찮다면 자동 로그인을 설정할 수 있습니다.</p>
+<h3>방법 1. netplwiz 이용</h3>
+<ol>
+<li>Win + R &rarr; netplwiz 실행</li>
+<li><b>사용자 이름과 암호를 입력해야 이 컴퓨터를 사용할 수 있음</b> 체크 해제</li>
+<li>새 계정 비밀번호 입력 &rarr; 확인</li>
+<li>재부팅하면 자동으로 로그인됩니다.</li>
+</ol>
+<h3>방법 2. 레지스트리 편집기 (고급)</h3>
+<ol>
+<li>Win + R &rarr; regedit 실행</li>
+<li>경로 이동:</li>
+<li>
+<div>
+<div>&nbsp;</div>
+</div>
+<div><span><span>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon </span></span></div>
+</li>
+<li>값 수정:
+<ul>
+<li>DefaultUserName &rarr; 새 계정 이름</li>
+<li>DefaultPassword &rarr; 계정 비밀번호</li>
+<li>AutoAdminLogon &rarr; 1</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2>&nbsp;5. 정리</h2>
+<ul>
+<li>기존 계정을 삭제하려면 반드시 <b>새 계정을 관리자 권한</b>으로 만들어둬야 합니다.</li>
+<li>삭제 전, <b>C:\Users\기존계정명</b> 폴더 안의 데이터를 꼭 백업하세요.</li>
+<li>자동 로그인까지 설정하면 매번 암호 입력 없이 바로 바탕화면 진입이 가능합니다.</li>
+</ul>
+<p>&nbsp;&gt; 저처럼 Microsoft 계정을 바꿔야 하는 분들은 위 순서를 따라 하면 깔끔하게 정리할 수 있습니다.</p></div>
+  <a class="button" href="https://ksp668.tistory.com/31" target="_blank" rel="noopener">티스토리 블로그에서 전체 글 보기</a>
+</body>
+</html>
