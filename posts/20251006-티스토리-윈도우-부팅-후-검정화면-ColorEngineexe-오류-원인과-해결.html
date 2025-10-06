@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>윈도우 부팅 후 검정화면, ColorEngine.exe 오류 원인과 해결</title>
+  <meta name="robots" content="index,follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; max-width: 800px; margin: auto; padding: 2em; }
+    .title { font-size: 1.8em; font-weight: 800; margin-bottom: 0.5em; }
+    .meta { color: #777; margin-bottom: 1em; }
+    .summary { font-size: 1em; color: #333; margin-bottom: 2em; }
+    .badge { display:inline-block; font-size: 0.85em; padding: 2px 8px; border-radius: 999px; background:#eef; margin-right:8px; }
+    .summary img { max-width: 100%; height: auto; }
+    a.button { background: #0077cc; color: white; padding: 0.6em 1em; text-decoration: none; border-radius: 6px; }
+    a.button:hover { background: #005fa3; }
+  </style>
+</head>
+<body>
+  <div class="title">윈도우 부팅 후 검정화면, ColorEngine.exe 오류 원인과 해결</div>
+  <div class="meta"><span class="badge">티스토리</span>🗓 2025-10-06</div>
+  <div class="summary"><p>PC 관리하다 보면 가끔 황당한 문제가 터집니다. 이번에 제가 직접 겪은 케이스는 <b>윈도우 로그인 후 검정 화면만 나오고, ColorEngine.exe 오류 메시지가 뜨는 현상</b>이었습니다.</p>
+<p>여러 번 재부팅해도 계속 같은 증상이 반복되어 안전 모드로 진입을 시도했는데, BitLocker 복구키 입력 문제로 실패. 그런데 아이러니하게도, 그 직후 일반 모드로 다시 부팅했더니 정상적으로 Windows가 실행되었습니다.&nbsp;</p>
+<p>&nbsp;</p>
+<p><figure class="imageblock alignCenter"><span><img height="235" src="https://blog.kakaocdn.net/dn/bIgFJu/btsQUAhKXGb/OYo4DE1TcaKtSkIwekNRy0/img.png" width="547" /></span></figure>
+</p>
+<hr />
+<h2>1️⃣ 증상</h2>
+<ul>
+<li>Windows 로그인 후 검정 화면만 표시</li>
+<li><b>ColorEngine.exe 응용 프로그램 오류</b> 팝업 발생</li>
+<li>explorer.exe 프로세스는 실행 중이지만 바탕화면/작업 표시줄 미출력</li>
+<li>시작 프로그램, 서비스, 작업 관리자에 ColorEngine 관련 항목 없음</li>
+</ul>
+<hr />
+<h2>2️⃣ 원인 추정</h2>
+<p>여러 가능성을 검토한 결과, 가장 유력한 원인은 <b>그래픽 드라이버 갱신 직후 초기화 과정에서 발생한 충돌</b>입니다.</p>
+<ul>
+<li>그래픽 드라이버 업데이트 후 첫 부팅에서, 기존 <b>색상 프로파일(ICC)</b> 또는 ColorEngine 관련 모듈을 로드하다 실패</li>
+<li>이 과정이 <b>Windows Explorer 초기화와 충돌</b> &rarr; 바탕화면이 뜨지 않음</li>
+<li><b>안전 모드 진입 시도 과정에서 Windows 복구 메커니즘이 작동</b>, 문제된 실행 항목이 무시되면서 다음 부팅에 정상화된 것으로 보입니다.</li>
+</ul>
+<p>삼성 노트북에서는 shift + 전원버튼 or f8 연타로 안전모드 진입을 할수있습니다.</p>
+<hr />
+<h2>3️⃣ 왜 재부팅 후 정상으로 돌아왔나?</h2>
+<p>Windows 10/11에는 연속 부팅 실패 시 <b>자동 복구(WinRE)</b> 메커니즘이 동작합니다.</p>
+<ul>
+<li>부팅 로더 및 레지스트리 점검</li>
+<li>임시 실행 항목(RunOnce) 정리</li>
+<li>손상된 드라이버 호출 무시</li>
+</ul>
+<p>이번 경우에도, 안전 모드 진입 시도 &rarr; 실패 &rarr; 복구 모드 개입 &rarr; ColorEngine 관련 호출 무시 &rarr; 정상 부팅으로 이어진 것입니다.</p>
+<hr />
+<h2>4️⃣ 대응 방법</h2>
+<p>당시 제가 IT팀 입장에서 취한 대응 및 권장 조치는 다음과 같습니다.</p>
+<p><b>즉시 조치</b></p>
+<ol>
+<li>정상 부팅 여부 확인 (재부팅 반복 시도)</li>
+<li>이벤트 뷰어에서 ColorEngine.exe 오류 로그 확인</li>
+</ol>
+<p><b>재발 시 대응 프로세스</b></p>
+<ol>
+<li>BitLocker 복구키 확보 &rarr; 안전 모드 진입 가능하도록 준비</li>
+<li>**DDU(Display Driver Uninstaller)**로 그래픽 드라이버 클린 제거</li>
+<li>최신 안정 버전 드라이버 재설치</li>
+<li>색상 관리(ICC 프로파일) 초기화</li>
+</ol>
+<hr />
+<h2>5️⃣ 교훈</h2>
+<ul>
+<li>윈도우 검정 화면 문제는 대부분 <b>탐색기 미실행</b> 또는 <b>드라이버/외부 모듈 충돌</b>에서 비롯됩니다.</li>
+<li>이번 케이스는 <b>그래픽 드라이버와 ColorEngine 모듈 충돌</b>이었고, Windows 복구 메커니즘이 자동으로 문제를 우회해 해결한 사례였습니다.</li>
+<li>IT팀 입장에서는 <b>BitLocker 복구키 확보</b>, <b>드라이버 클린 설치 절차 준비</b>가 필수라는 점을 다시 느꼈습니다.</li>
+</ul>
+<hr />
+<p>✅ <b>정리:</b><br />윈도우 로그인 후 검정 화면이 나오고, ColorEngine.exe 오류가 발생한다면 &rarr; <b>그래픽 드라이버 충돌 가능성이 높습니다.</b><br />당장은 재부팅으로 풀릴 수 있지만, **재발 시 대비책(안전 모드 진입 + 드라이버 클린 설치)**을 마련해 두는 것이 안전합니다.</p></div>
+  <a class="button" href="https://ksp668.tistory.com/32" target="_blank" rel="noopener">티스토리 블로그에서 전체 글 보기</a>
+</body>
+</html>
