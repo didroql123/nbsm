@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>CISO 보안점검 체크리스트 (간단 정리)</title>
+  <meta name="robots" content="index,follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; max-width: 800px; margin: auto; padding: 2em; }
+    .title { font-size: 1.8em; font-weight: 800; margin-bottom: 0.5em; }
+    .meta { color: #777; margin-bottom: 1em; }
+    .summary { font-size: 1em; color: #333; margin-bottom: 2em; }
+    .badge { display:inline-block; font-size: 0.85em; padding: 2px 8px; border-radius: 999px; background:#eef; margin-right:8px; }
+    .summary img { max-width: 100%; height: auto; }
+    a.button { background: #0077cc; color: white; padding: 0.6em 1em; text-decoration: none; border-radius: 6px; }
+    a.button:hover { background: #005fa3; }
+  </style>
+</head>
+<body>
+  <div class="title">CISO 보안점검 체크리스트 (간단 정리)</div>
+  <div class="meta"><span class="badge">티스토리</span>🗓 2025-10-20</div>
+  <div class="summary"><p>최근 KISA(한국인터넷진흥원)에서<br /><b>CISO 신고기업을 대상으로 한 긴급 보안점검</b>이 시행되고 있습니다.</p>
+<p>최근 발생한 보안사고의 대부분이<br />&lsquo;인터넷 접점 자산(망 접점)&rsquo;에서 비롯된 만큼,<br />기업 내 IT자산 및 백업체계에 대한 전반적인 점검이 요구되고 있습니다.</p>
+<hr />
+<h2>  CISO 긴급 보안점검 주요 내용</h2>
+<blockquote>
+<p><b>(목적)</b><br />망접점 자산 취약점 점검 및 기업 백업체계 강화</p>
+<p><b>(대상)</b><br />국내 CISO 신고기업</p>
+<p><b>(기간)</b></p>
+<ul>
+<li>ISMS 인증 기업 &rarr; ~10.31</li>
+<li>상장기업 &rarr; ~11.30</li>
+<li>중소기업 &rarr; ~12.31</li>
+</ul>
+<p><b>(내용)</b><br />전사 IT자산 실사 &rarr; 인터넷 접점 자산 식별 &rarr;<br />취약점 점검 &rarr; 자체 백업훈련 및 결과보고</p>
+</blockquote>
+<p>  출처: KISA 보호나라</p>
+<hr />
+<h2>✅ CISO 보안점검 체크리스트</h2>
+<h3>1️⃣ IT 자산 실사 및 인터넷 접점 자산 점검</h3>
+<ul>
+<li>전사 PC 및 서버 자산 목록 수집</li>
+<li>공용 PC 및 개인 PC 현황 확인</li>
+<li>패스워드 복잡도 설정 (대문자+숫자+특수문자 포함)</li>
+<li>패스워드 주기적 변경 (90일 권장)</li>
+<li>Windows 업데이트 자동설정 및 최신 유지</li>
+<li>비인가 소프트웨어 설치 여부 확인</li>
+<li>윈도우 방화벽 실행 여부</li>
+<li>백신 설치 및 최신 업데이트 확인</li>
+<li>실시간 감시 기능 활성화</li>
+<li>외부저장장치 자동실행 차단</li>
+</ul>
+<hr />
+<h3>2️⃣ 서버 및 네트워크 인프라 점검</h3>
+<ul>
+<li>서버 자산 목록(IP, OS, 역할 포함) 수집</li>
+<li>관리자 비밀번호 복잡도&middot;변경주기 점검</li>
+<li>최신 보안패치 적용 여부 확인</li>
+<li>불필요 서비스 및 포트 비활성화</li>
+<li>비인가 원격접속 제한 (RDP, SSH 등)</li>
+<li>서버용 백신 설치 및 실시간 감시 기능 활성화</li>
+<li>VPN/SSL 인증 적용</li>
+<li>시스템&middot;보안 로그 보관</li>
+<li>정기 백업 정책 수립 및 수행</li>
+<li>관리자 OTP(이중인증) 적용 권장</li>
+</ul>
+<hr />
+<h3>3️⃣ 백업체계 점검</h3>
+<ul>
+<li>정기 백업 주기 및 대상 확인</li>
+<li>백업 저장 위치&middot;매체 관리 (오프라인/암호화 권장)</li>
+<li>자동백업 스케줄러 또는 솔루션 점검</li>
+<li>복구 테스트(도상훈련) 실시</li>
+<li>복구 후 서비스 정상 작동 확인</li>
+<li>백업매체 보관 및 접근제한 설정</li>
+<li>백업 점검 결과보고서 작성 및 CEO 보고</li>
+</ul>
+<hr />
+<h2>  추가 점검 권장 항목</h2>
+<ul>
+<li>BitLocker(디스크 암호화) 적용</li>
+<li>USB 차단 정책 중앙관리 (GPO 정책 활용)</li>
+<li>서버 접근 IP 화이트리스트 설정</li>
+<li>백업 로그 점검 및 복구 소요시간(RTO) 기록</li>
+<li>클라우드 이중 백업 / 정기 복구훈련 일정화</li>
+</ul>
+<hr />
+<h2>  점검 주기 권장</h2>
+<div>
+<div>구분권장 주기비고
+<table border="1" style="border-collapse: collapse; width: 100%;">
+<tbody>
+<tr>
+<td>PC 보안점검</td>
+<td>월 1회</td>
+<td>기본 점검</td>
+</tr>
+<tr>
+<td>서버 점검</td>
+<td>분기 1회</td>
+<td>패치&middot;계정&middot;포트 중심</td>
+</tr>
+<tr>
+<td>백업 점검 및 복구훈련</td>
+<td>반기 1회</td>
+<td>도상훈련 또는 실전테스트</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<hr />
+<h2>✍️ 마무리</h2>
+<p><br />보안점검의 핵심은 &lsquo;꾸준한 관리&rsquo;입니다.</p>
+<p>보안점검은 복잡한 절차보다<br /><b>&ldquo;기초 항목을 얼마나 꾸준히 관리하느냐&rdquo;</b> 가 더 중요합니다.</p>
+<p>패치, 백신, 비밀번호, 백업 &mdash;<br />이 네 가지가 관리되면 대부분의 사고는 예방할 수 있습니다.</p>
+<blockquote>
+<p>&ldquo;보안은 한 번의 조치가 아니라, 매일의 습관이다.&rdquo;</p>
+</blockquote>
+<p>전산 담당자 입장에서는<br />이번 CISO 보안점검을 계기로 내부 시스템 점검을 정례화하는 것이 가장 중요하다고 생각합니다.</p></div>
+  <a class="button" href="https://ksp668.tistory.com/35" target="_blank" rel="noopener">티스토리 블로그에서 전체 글 보기</a>
+</body>
+</html>
