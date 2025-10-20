@@ -10,6 +10,7 @@ from urllib.parse import quote, urlparse
 FEEDS = [
     "https://rss.blog.naver.com/rudtn668.xml",  # 네이버
     "https://ksp668.tistory.com/rss",           # 티스토리
+    "https://rss.blog.naver.com/syslogbook.xml"
 ]
 
 base_url = "https://didroql123.github.io/nbsm"
