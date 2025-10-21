@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>더존 위하고 인쇄 오류 해결 (설치 페이지 반복 실행 문제)</title>
+  <meta name="robots" content="index,follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; max-width: 800px; margin: auto; padding: 2em; }
+    .title { font-size: 1.8em; font-weight: 800; margin-bottom: 0.5em; }
+    .meta { color: #777; margin-bottom: 1em; }
+    .summary { font-size: 1em; color: #333; margin-bottom: 2em; }
+    .badge { display:inline-block; font-size: 0.85em; padding: 2px 8px; border-radius: 999px; background:#eef; margin-right:8px; }
+    .summary img { max-width: 100%; height: auto; }
+    a.button { background: #0077cc; color: white; padding: 0.6em 1em; text-decoration: none; border-radius: 6px; }
+    a.button:hover { background: #005fa3; }
+  </style>
+</head>
+<body>
+  <div class="title">더존 위하고 인쇄 오류 해결 (설치 페이지 반복 실행 문제)</div>
+  <div class="meta"><span class="badge">티스토리</span>🗓 2025-10-21</div>
+  <div class="summary"><p>업무 중 더존 위하고(WEHAGO)를 사용할 때,<br />인쇄 버튼을 눌렀는데 계속 <b>&lsquo;설치 페이지&rsquo;가 반복해서 나오는 현상</b>을 겪는 경우가 있습니다.<br />오늘은 실제로 발생했던 사례와 해결 방법을 정리해보았습니다.</p>
+<hr />
+<h2>  문제 증상</h2>
+<ul>
+<li>인쇄 버튼 클릭 시 설치 화면이 계속 반복됨</li>
+<li>설치를 완료해도 인쇄 시 다시 설치창이 열림</li>
+<li>원격 설치까지 진행했지만 동일한 현상 발생</li>
+</ul>
+<p>이런 현상은 프로그램 자체의 오류라기보다,<br /><b>PC 내 보안프로그램 간 충돌</b>로 인해 위하고 인쇄 모듈이 제대로 동작하지 않는 경우가 많습니다.</p>
+<hr />
+<h2>  1단계 &ndash; 서비스에서 보안프로그램 중지</h2>
+<p>가장 먼저 <b>작업관리자 &rarr; 서비스 탭</b>으로 이동하여<br />&lsquo;보안&rsquo; 관련 서비스(은행 보안모듈, 키보드보안, 캡처차단 등)를 모두 <b>중지</b>시켜봤습니다.</p>
+<p>하지만 이 방법만으로는 <b>증상이 그대로 유지</b>되었습니다.<br />즉, 단순 중지로는 이미 실행 중인 보호 모듈을 완전히 차단하지 못한 셈이었습니다.</p>
+<hr />
+<h2>  2단계 &ndash; 불필요한 보안프로그램 삭제</h2>
+<p>다음으로 <b>제어판 &rarr; 프로그램 추가/제거</b>로 이동하여<br />회사 필수 백신(V3)만 남기고,<br />기타 보안프로그램(은행용, 공공사이트용, 키보드보안 등)을 <b>모두 삭제</b>했습니다.</p>
+<p>삭제 후 <b>재부팅 &rarr; 위하고 재설치 &rarr; 인쇄 테스트</b> 과정을 거치자<br />정상적으로 인쇄가 작동했습니다 ✅</p>
+<hr />
+<h2>  원인 분석</h2>
+<p>최근 PC에는 여러 보안프로그램이 동시에 설치되어 있는 경우가 많습니다.<br />특히 다음과 같은 프로그램이 <b>인쇄 모듈과 충돌</b>을 일으킬 수 있습니다.</p>
+<ul>
+<li><b>화면 캡처 차단 프로그램</b></li>
+<li><b>키보드 입력 감시 프로그램</b></li>
+<li><b>은행 사이트용 보안모듈 (nProtect, TouchEnKey 등)</b></li>
+</ul>
+<p>이들은 인쇄 모듈의 <b>렌더링(화면 출력) 권한</b>을 제한하기 때문에,<br />위하고의 설치 페이지가 무한 반복되는 현상이 발생합니다.</p>
+<hr />
+<h2>✅ 해결 방법 정리</h2>
+<div>
+<div>구분조치 내용결과
+<table border="1" style="border-collapse: collapse; width: 100%;">
+<tbody>
+<tr>
+<td>1</td>
+<td>서비스에서 보안프로그램 중지</td>
+<td>실패</td>
+</tr>
+<tr>
+<td>2</td>
+<td>불필요한 보안프로그램 삭제</td>
+<td>성공</td>
+</tr>
+<tr>
+<td>3</td>
+<td>위하고 재설치 및 인쇄 테스트</td>
+<td>정상 작동</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<hr />
+<h2>  정리 및 팁</h2>
+<ul>
+<li>인쇄창이 반복해서 나타날 경우, <b>보안프로그램 충돌</b>을 의심하세요.</li>
+<li><b>은행/공공기관용 보안모듈</b>은 사용 후 반드시 삭제하는 것이 좋습니다.</li>
+<li><b>V3, Ahnlab Safe Transaction</b> 정도만 남겨두는 것이 안정적입니다.</li>
+<li>회사 PC라면 IT 담당자나 전산팀을 통해 설치 및 점검을 요청하세요.</li>
+</ul>
+<hr />
+<h3>  결론</h3>
+<blockquote>
+<p>&ldquo;위하고 인쇄 오류는 보안프로그램 충돌이 대부분의 원인이다.&rdquo;</p>
+</blockquote>
+<p>불필요한 보안프로그램을 정리하고,<br />재설치만으로 해결되는 경우가 많습니다.<br />같은 증상으로 고생 중이라면 위 단계를 꼭 따라 해보세요</p></div>
+  <a class="button" href="https://ksp668.tistory.com/36" target="_blank" rel="noopener">티스토리 블로그에서 전체 글 보기</a>
+</body>
+</html>
