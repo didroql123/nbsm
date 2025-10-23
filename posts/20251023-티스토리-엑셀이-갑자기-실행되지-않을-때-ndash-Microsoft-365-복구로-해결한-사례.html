@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>엑셀이 갑자기 실행되지 않을 때 &amp;ndash; Microsoft 365 복구로 해결한 사례</title>
+  <meta name="robots" content="index,follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; max-width: 800px; margin: auto; padding: 2em; }
+    .title { font-size: 1.8em; font-weight: 800; margin-bottom: 0.5em; }
+    .meta { color: #777; margin-bottom: 1em; }
+    .summary { font-size: 1em; color: #333; margin-bottom: 2em; }
+    .badge { display:inline-block; font-size: 0.85em; padding: 2px 8px; border-radius: 999px; background:#eef; margin-right:8px; }
+    .summary img { max-width: 100%; height: auto; }
+    a.button { background: #0077cc; color: white; padding: 0.6em 1em; text-decoration: none; border-radius: 6px; }
+    a.button:hover { background: #005fa3; }
+  </style>
+</head>
+<body>
+  <div class="title">엑셀이 갑자기 실행되지 않을 때 &amp;ndash; Microsoft 365 복구로 해결한 사례</div>
+  <div class="meta"><span class="badge">티스토리</span>🗓 2025-10-23</div>
+  <div class="summary"><p>업무 중 갑자기 <b>엑셀이 열리지 않는 현상</b>을 겪은 적이 있습니다.<br />더블클릭을 해도 아무 반응이 없고,<br />작업 관리자에서도 프로세스가 전혀 잡히지 않는 상황이었죠.</p>
+<p>처음에는 특정 엑셀 파일이 손상된 줄 알았는데,<br />확인차 <b>파워포인트</b>를 실행해보니 이번엔 에러창이 바로 뜨더군요.<br />이쯤 되니 &ldquo;엑셀 문제가 아니라, Microsoft 365 전체 오류다&rdquo;라는 확신이 들었습니다.</p>
+<hr />
+<h2>  원인 추정</h2>
+<p>Microsoft 365(오피스 365)는 주기적으로 백그라운드 업데이트가 진행됩니다.<br />이 과정에서 특정 보안 프로그램이나 윈도우 업데이트와 충돌하면<br /><b>엑셀, 워드, 파워포인트 모두 실행 불가 상태</b>가 되는 경우가 있습니다.</p>
+<p>특히 회사 PC처럼 여러 보안프로그램이 설치된 환경에서는<br />이런 충돌이 의외로 자주 발생하죠.</p>
+<hr />
+<h2>  해결 방법 &ndash; &ldquo;삭제&rdquo;가 아니라 &ldquo;복구&rdquo;</h2>
+<p>다행히 이 문제는 완전한 재설치 없이도 해결할 수 있습니다.<br />저는 다음 순서로 해결했습니다.</p>
+<ol>
+<li><b>제어판 &rarr; 프로그램 및 기능</b>으로 이동</li>
+<li>목록에서 <b>Microsoft 365</b>를 찾기</li>
+<li><b>우클릭 &rarr; 변경</b> 선택</li>
+<li>&ldquo;복구(Repair)&rdquo; 메뉴 실행</li>
+</ol>
+<p>여기서 두 가지 복구 방식이 나옵니다.</p>
+<ul>
+<li><b>빠른 복구:</b> 대부분의 손상 파일 및 충돌을 즉시 복원 (대부분 이걸로 해결)</li>
+<li><b>온라인 복구:</b> 완전 초기화 수준의 복구 (시간 오래 걸림, 재로그인 필요)</li>
+</ul>
+<p>저는 빠른 복구만으로 바로 정상화되었습니다.<br />엑셀, 파워포인트, 워드 모두 다시 잘 열렸습니다.</p>
+<hr />
+<h2>  참고 팁</h2>
+<ul>
+<li>엑셀만 안 열리더라도, 사실상 <b>Office 전체 손상</b>일 가능성이 높습니다.</li>
+<li>삭제/재설치보다 먼저 &ldquo;복구&rdquo;를 시도하세요.</li>
+<li>보안프로그램 업데이트 직후라면, 해당 프로그램을 일시 중지하고 복구를 진행하면 성공률이 높습니다.</li>
+<li>복구 후에는 <b>Windows 업데이트</b>도 최신 상태로 맞춰주는 게 좋습니다.</li>
+</ul>
+<hr />
+<h2>✅ 정리</h2>
+<div>
+<div>구분내용
+<table border="1" style="border-collapse: collapse; width: 100%;">
+<tbody>
+<tr>
+<td>문제</td>
+<td>엑셀 및 오피스 앱이 실행되지 않음</td>
+</tr>
+<tr>
+<td>원인</td>
+<td>Microsoft 365 손상 또는 업데이트 충돌</td>
+</tr>
+<tr>
+<td>해결</td>
+<td>제어판 &rarr; Microsoft 365 &rarr; 변경 &rarr; 복구 실행</td>
+</tr>
+<tr>
+<td>비고</td>
+<td>빠른 복구로 대부분 해결 가능</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<hr />
+<p>  <b>한 줄 요약:</b></p>
+<blockquote>
+<p>엑셀이 안 열린다면 삭제보다 &ldquo;복구&rdquo;가 먼저입니다.</p>
+</blockquote></div>
+  <a class="button" href="https://ksp668.tistory.com/37" target="_blank" rel="noopener">티스토리 블로그에서 전체 글 보기</a>
+</body>
+</html>
