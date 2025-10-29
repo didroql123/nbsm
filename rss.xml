@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+    <title>박경수 블로그 통합 RSS</title>
+    <link>https://didroql123.github.io/nbsm</link>
+    <description>네이버 + 티스토리 + 네이버(syslogbook) 블로그 최신글 모음</description>
+    <language>ko</language>
+
+    <!-- Combined entries from Naver Blog (rudtn668), Tistory (ksp668), and Naver Blog (syslogbook) -->
+
+    <item>
+      <title>동탄 헤센IT지식센터 새콤 돈까쓰, 뜨돈 화성반월점</title>
+      <link>https://blog.naver.com/rudtn668/224055265319</link>
+      <description>새콤한 돈까스와 분위기 좋은 화성반월점 방문기.</description>
+      <pubDate>Mon, 27 Oct 2025 14:19:39 +0900</pubDate>
+    </item>
+
+    <item>
+      <title>회의록에 더이상 시간쓰지마세요 회의록 작성 꿀팁</title>
+      <link>https://blog.naver.com/syslogbook/224055092162</link>
+      <description>회의록을 효율적으로 작성하는 방법과 시간을 절약하는 팁.</description>
+      <pubDate>Mon, 27 Oct 2025 11:45:07 +0900</pubDate>
+    </item>
+
+    <item>
+      <title>엑셀이 갑자기 실행되지 않을 때 – Microsoft 365 복구로 해결한 사례</title>
+      <link>https://ksp668.tistory.com/37</link>
+      <description>엑셀과 오피스 앱이 실행되지 않을 때 빠른 복구로 문제를 해결한 경험을 공유합니다.</description>
+      <pubDate>Thu, 23 Oct 2025 14:06:35 +0900</pubDate>
+    </item>
+
+    <item>
+      <title>엑셀이 안열려요 Microsoft 365 에러 해결 방법</title>
+      <link>https://blog.naver.com/syslogbook/224051043968</link>
+      <description>Microsoft 365에서 엑셀이 열리지 않을 때 해결하는 방법을 소개합니다.</description>
+      <pubDate>Thu, 23 Oct 2025 13:25:07 +0900</pubDate>
+    </item>
+
+    <item>
+      <title>더존 위하고 인쇄 오류 해결 (설치 페이지 반복 실행 문제)</title>
+      <link>https://ksp668.tistory.com/36</link>
+      <description>위하고 프로그램에서 인쇄 버튼을 눌렀을 때 설치 페이지가 반복되는 문제를 해결하는 방법을 정리합니다.</description>
+      <pubDate>Tue, 21 Oct 2025 11:41:14 +0900</pubDate>
+    </item>
+
+    <item>
+      <title>더존 위하고 인쇄버튼눌렀는데 설치 페이지 나올때 해결방법</title>
+      <link>https://blog.naver.com/syslogbook/224048425786</link>
+      <description>더존 위하고에서 인쇄 버튼을 누를 때 설치 페이지가 나타나는 현상을 해결하는 팁.</description>
+      <pubDate>Wed, 22 Oct 2025 08:00:00 +0900</pubDate>
+    </item>
+
+    <item>
+      <title>수원역 로데오거리 맛난 고기집 수원역생고기</title>
+      <link>https://blog.naver.com/rudtn668/224047422470</link>
+      <description>수원역 로데오거리의 생고기집 방문 후기.</description>
+      <pubDate>Mon, 20 Oct 2025 14:26:53 +0900</pubDate>
+    </item>
+
+    <item>
+      <title>CISO 보안점검 체크리스트 (간단 정리)</title>
+      <link>https://ksp668.tistory.com/35</link>
+      <description>KISA에서 시행한 CISO 보안점검의 주요 내용과 체크리스트를 간략하게 정리합니다.</description>
+      <pubDate>Mon, 20 Oct 2025 13:19:02 +0900</pubDate>
+    </item>
+
+    <item>
+      <title>코인 공부하며 3%씩 - 3편 : 이더리움(ETH)</title>
+      <link>https://blog.naver.com/rudtn668/224036389189</link>
+      <description>암호화폐 투자 시리즈 3편으로, 이더리움(ETH) 매매와 수익률 기록.</description>
+      <pubDate>Fri, 10 Oct 2025 10:36:43 +0900</pubDate>
+    </item>
+
+  </channel>
+</rss>
