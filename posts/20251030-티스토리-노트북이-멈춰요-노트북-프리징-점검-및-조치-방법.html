@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>노트북이 멈춰요! 노트북 프리징 점검 및 조치 방법</title>
+  <meta name="robots" content="index,follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; max-width: 800px; margin: auto; padding: 2em; }
+    .title { font-size: 1.8em; font-weight: 800; margin-bottom: 0.5em; }
+    .meta { color: #777; margin-bottom: 1em; }
+    .summary { font-size: 1em; color: #333; margin-bottom: 2em; }
+    .badge { display:inline-block; font-size: 0.85em; padding: 2px 8px; border-radius: 999px; background:#eef; margin-right:8px; }
+    .summary img { max-width: 100%; height: auto; }
+    a.button { background: #0077cc; color: white; padding: 0.6em 1em; text-decoration: none; border-radius: 6px; }
+    a.button:hover { background: #005fa3; }
+  </style>
+</head>
+<body>
+  <div class="title">노트북이 멈춰요! 노트북 프리징 점검 및 조치 방법</div>
+  <div class="meta"><span class="badge">티스토리</span>🗓 2025-10-30</div>
+  <div class="summary"><p>노트북 사용 중 마우스나 화면이 <b>약 5~10초 동안 멈췄다가 다시 정상으로 돌아오는 현상</b>은<br />하드웨어, 전원 관리, 메모리 과점유, 드라이버 충돌 등 다양한 원인으로 발생합니다.<br />다음은 실제 사례를 기반으로 정리한 <b>점검 순서 및 조치 방법</b>입니다.</p>
+<hr />
+<h2>1️⃣ SSD 상태 점검</h2>
+<p><b>점검 이유</b><br />프리징 증상의 대표적인 원인은 SSD의 I/O 지연입니다.<br />배드섹터나 펌웨어 불안정으로 인해 읽기&middot;쓰기 지연이 발생하면<br />시스템이 순간 멈춘 것처럼 보일 수 있습니다.</p>
+<p><b>점검 방법</b></p>
+<ul>
+<li>도구: <b>CrystalDiskInfo</b></li>
+<li>확인 항목: 건강 상태(Good), 온도, 재할당 섹터(Reallocated Sector Count)</li>
+</ul>
+<p><b>정상 기준</b></p>
+<ul>
+<li>상태: Good</li>
+<li>오류 섹터 없음</li>
+<li>온도 40~55℃</li>
+</ul>
+<p><b>비정상 시 조치</b></p>
+<ul>
+<li>CMD 실행 &rarr; chkdsk /f /r (파일 시스템 검사)</li>
+<li>펌웨어 업데이트 (Samsung Magician, Crucial Storage Executive 등)</li>
+<li>&ldquo;주의/나쁨&rdquo; 상태 시 즉시 백업 후 SSD 교체</li>
+</ul>
+<hr />
+<h2>2️⃣ 전원 설정 점검</h2>
+<p><b>점검 이유</b><br />Windows의 기본 전원 모드(균형모드)는 CPU가 절전 상태(C-State)로 자주 전환됩니다.<br />전환 시 전력 복귀가 지연되면 <b>짧은 프리징 현상</b>이 발생할 수 있습니다.</p>
+<p>&nbsp;</p>
+<p><b>점검 방법</b></p>
+<ul>
+<li>제어판 &rarr; 전원 옵션 &rarr; &ldquo;고성능(High performance)&rdquo; 선택</li>
+</ul>
+<p><b>조치 명령어</b></p>
+<div>
+<div>&nbsp;</div>
+<div><span><span><span></span></span></span>
+<pre class="bash" id="code_1761802298765"><code>powercfg /setactive SCHEME_MIN
+powercfg -change disk-timeout-ac 0
+powercfg /setacvalueindex SCHEME_CURRENT SUB_USB USBSELECTIVESUSPEND 0
+powercfg /h off</code></pre>
+</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+</div>
+<p><b>비정상 시 조치</b></p>
+<ul>
+<li>절전 모드 비활성화</li>
+<li>디스크 절전 시간을 0으로 설정</li>
+<li>USB 절전 해제</li>
+</ul>
+<hr />
+<h2>3️⃣ 이벤트 뷰어 점검</h2>
+<p><b>점검 이유</b><br />시스템 프리징은 대부분 이벤트 로그에 오류 코드가 남습니다.<br />특히 전원, 그래픽, 저장장치 관련 이벤트를 우선적으로 확인합니다.</p>
+<p><b>확인 경로</b></p>
+<ul>
+<li>제어판 &rarr; 관리 도구 &rarr; 이벤트 뷰어 &rarr; Windows 로그 &rarr; 시스템</li>
+</ul>
+<p><b>주요 이벤트 코드 및 조치</b></p>
+<div>
+<div>이벤트의미조치
+<table border="1" style="border-collapse: collapse; width: 100%;">
+<tbody>
+<tr>
+<td>Kernel-Power 41</td>
+<td>비정상 전원 차단</td>
+<td>BIOS 전원 관리 초기화</td>
+</tr>
+<tr>
+<td>Disk</td>
+<td>저장장치 I/O 오류</td>
+<td>SSD 점검 또는 교체</td>
+</tr>
+<tr>
+<td>Display 4101</td>
+<td>그래픽 드라이버 멈춤</td>
+<td>GPU 드라이버 재설치</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><b>정상 기준</b></p>
+<ul>
+<li>Error, Critical 이벤트 없음</li>
+<li>Disk, Display, Kernel-Power 관련 로그 없음</li>
+</ul>
+<hr />
+<h2>4️⃣ 메모리 사용량 점검</h2>
+<p><b>점검 이유</b><br />Windows 11 환경에서는 백그라운드 서비스(Copilot, Teams, Edge 등)가<br />메모리를 과도하게 점유해 <b>시스템 응답 지연</b>을 유발할 수 있습니다.</p>
+<p><b>점검 방법</b></p>
+<ul>
+<li>Ctrl + Shift + Esc &rarr; 작업 관리자 &rarr; &ldquo;메모리&rdquo; 탭</li>
+<li>상시 점유 프로세스 확인</li>
+</ul>
+<p><b>비정상 시 조치</b></p>
+<ul>
+<li>시작 프로그램 관리 (Ctrl + Shift + Esc &rarr; 시작프로그램)
+<ul>
+<li>Copilot, Teams, Edge 자동 실행 &ldquo;사용 안 함&rdquo;으로 변경</li>
+</ul>
+</li>
+<li>Office 캐시 경로 삭제 (%localappdata%\Microsoft\Office)</li>
+<li>메모리 진단 실행 (Windows Memory Diagnostic)
+<ul>
+<li>오류 시 메모리 교체</li>
+</ul>
+</li>
+</ul>
+<p><b>정상 기준</b></p>
+<ul>
+<li>사용 메모리 70% 이하 유지</li>
+<li>상시 점유 프로세스 없음</li>
+</ul>
+<hr />
+<h2>5️⃣ 추가 점검 항목</h2>
+<div>
+<div>항목점검 이유도구조치
+<table border="1" style="border-collapse: collapse; width: 100%;">
+<tbody>
+<tr>
+<td>발열</td>
+<td>CPU 쓰로틀링 여부</td>
+<td>HWMonitor</td>
+<td>팬 청소, 써멀구리스 재도포</td>
+</tr>
+<tr>
+<td>DPC Latency</td>
+<td>드라이버 지연 여부</td>
+<td>LatencyMon</td>
+<td>지연 드라이버 업데이트</td>
+</tr>
+<tr>
+<td>드라이버</td>
+<td>장치 절전 영향 여부</td>
+<td>장치 관리자</td>
+<td>Intel/Realtek 최신화</td>
+</tr>
+<tr>
+<td>BIOS</td>
+<td>전원관리 오류</td>
+<td>BIOS Setup</td>
+<td>C-States, SpeedStep 초기화</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<hr />
+<h2>✅ 결론</h2>
+<p>노트북 프리징(잠시 멈춤) 현상은 단일 원인으로 발생하지 않습니다.<br />그러나 아래 항목을 순서대로 점검하면 대부분의 문제를 진단할 수 있습니다.</p>
+<ol>
+<li>SSD 상태 확인</li>
+<li>전원 설정 조정 (고성능 모드)</li>
+<li>이벤트 뷰어 로그 점검</li>
+<li>메모리 과점유 프로세스 정리</li>
+<li>발열&middot;드라이버&middot;BIOS 순차 점검</li>
+</ol>
+<p>이번 사례에서는 <b>MS365 Copilot, Teams 등 백그라운드 앱의 메모리 과점유</b>와<br /><b>균형모드 전원 설정</b>이 겹쳐서 프리징이 발생한 것으로 확인되었습니다.<br />고성능 모드 전환과 불필요한 앱 비활성화 후 증상은 해소되었습니다.</p>
+<hr />
+<p>  <b>참고 요약</b></p>
+<div>
+<div>구분내용
+<table border="1" style="border-collapse: collapse; width: 100%;">
+<tbody>
+<tr>
+<td>주요 원인</td>
+<td>전원 절전 정책 + 메모리 과점유</td>
+</tr>
+<tr>
+<td>정상 기준</td>
+<td>SSD Good, 전원 고성능, 메모리 점유율 70% 이하</td>
+</tr>
+<tr>
+<td>조치 요약</td>
+<td>전원 설정 변경 + 시작앱 정리 + 캐시 초기화</td>
+</tr>
+<tr>
+<td>추가 확인</td>
+<td>BIOS / 드라이버 / DPC latency</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+  <a class="button" href="https://ksp668.tistory.com/38" target="_blank" rel="noopener">티스토리 블로그에서 전체 글 보기</a>
+</body>
+</html>
