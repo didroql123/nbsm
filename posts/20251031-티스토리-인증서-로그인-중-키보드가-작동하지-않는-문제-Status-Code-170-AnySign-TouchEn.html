@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>인증서 로그인 중 키보드가 작동하지 않는 문제 (Status Code 170, AnySign + TouchEn)</title>
+  <meta name="robots" content="index,follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; max-width: 800px; margin: auto; padding: 2em; }
+    .title { font-size: 1.8em; font-weight: 800; margin-bottom: 0.5em; }
+    .meta { color: #777; margin-bottom: 1em; }
+    .summary { font-size: 1em; color: #333; margin-bottom: 2em; }
+    .badge { display:inline-block; font-size: 0.85em; padding: 2px 8px; border-radius: 999px; background:#eef; margin-right:8px; }
+    .summary img { max-width: 100%; height: auto; }
+    a.button { background: #0077cc; color: white; padding: 0.6em 1em; text-decoration: none; border-radius: 6px; }
+    a.button:hover { background: #005fa3; }
+  </style>
+</head>
+<body>
+  <div class="title">인증서 로그인 중 키보드가 작동하지 않는 문제 (Status Code 170, AnySign + TouchEn)</div>
+  <div class="meta"><span class="badge">티스토리</span>🗓 2025-10-31</div>
+  <div class="summary"><p>은행이나 공공기관 사이트에서 인증서 로그인을 시도할 때<br />갑자기 <b>키보드가 입력되지 않거나 완전히 멈추는 현상</b>이 발생하는 경우가 있습니다.<br />화면에는 아래와 같은 메시지가 표시됩니다.</p>
+<div>
+<div>
+<div>&nbsp;</div>
+</div>
+<div><span><span>디버그 프로그램을 발견했습니다. (Status </span><span><span>Code</span></span><span>: </span><span><span>170</span></span><span>) </span></span></div>
+</div>
+<p>이후에는 키보드 입력이 차단되어<br />비밀번호나 인증서 암호를 입력할 수 없으며,<br />브라우저를 꺼도 증상이 지속되는 경우가 많습니다.</p>
+<hr />
+<h2>1. 문제 증상 요약</h2>
+<ul>
+<li>인증서 로그인 도중 키보드 입력이 불가능</li>
+<li>&ldquo;디버그 프로그램을 발견했습니다&rdquo; 메시지 출력</li>
+<li>공동인증서 창(AnySign)이 멈추거나 비밀번호 입력 불가</li>
+<li>브라우저를 종료해도 입력 불가 상태 지속</li>
+<li>재부팅 시에만 정상 복구되는 경우 존재</li>
+</ul>
+<p>이 문제는 <b>TouchEn nxKey(키보드 보안 프로그램)</b> 과<br /><b>AnySign(공동인증서 모듈)</b> 이 동시에 실행될 때 발생하는<br /><b>보안 후킹 충돌 현상</b>입니다.</p>
+<hr />
+<h2>2. 원인 분석</h2>
+<p>보안 프로그램은 해커가 비밀번호를 가로채지 못하도록<br /><b>후킹(Hooking)</b> 기술을 이용해 키보드 입력을 가로채 암호화합니다.</p>
+<blockquote>
+<p>입력 흐름:<br />키보드 &rarr; TouchEn nxKey(암호화) &rarr; 브라우저</p>
+</blockquote>
+<p>하지만 AnySign 또한 동일한 방식으로 입력을 후킹합니다.<br />이 두 프로그램이 동시에 작동하면 TouchEn이 AnySign을<br />&lsquo;디버깅 프로그램&rsquo;으로 오인하여 <b>보호모드(입력 차단 모드)</b> 로 전환됩니다.<br />그 결과 Status Code 170 오류가 발생하며 키보드 입력이 완전히 멈춥니다.</p>
+<hr />
+<h2>3. 해결 방법</h2>
+<h3>(1) 오류창 닫기</h3>
+<p>창을 닫지 않으면 입력이 계속 차단된 상태가 됩니다.</p>
+<h3>(2) 작업 관리자에서 프로세스 종료</h3>
+<ul>
+<li>단축키: Ctrl + Shift + Esc</li>
+<li>아래 항목을 찾아 <b>작업 끝내기</b>
+<ul>
+<li>TouchEn</li>
+<li>nxKey</li>
+<li>AnySign</li>
+<li>KeyCrypt</li>
+</ul>
+</li>
+</ul>
+<h3>(3) 브라우저 완전 종료</h3>
+<p>모든 브라우저(Chrome, Edge, Whale 등)를 닫고<br />작업 관리자에서 관련 프로세스(chrome.exe, msedge.exe)가 남아 있다면 종료합니다.</p>
+<h3>(4) 재실행 또는 재부팅</h3>
+<p>브라우저 재시작 후 입력이 복구되지 않는다면, PC를 재부팅합니다.</p>
+<blockquote>
+<p>※ 임시 조치: Windows + Ctrl + O 단축키를 눌러<br /><b>화면 키보드(가상 키보드)</b> 를 통해 입력 가능.</p>
+</blockquote>
+<hr />
+<h2>4. 재발 방지 방안</h2>
+<div>
+<div>항목내용
+<table border="1" style="border-collapse: collapse; width: 100%;">
+<tbody>
+<tr>
+<td>한쪽만 실행</td>
+<td>인증서 로그인 시엔 AnySign만, 일반 로그인 시엔 nxKey만 사용</td>
+</tr>
+<tr>
+<td>백신 예외 등록</td>
+<td>V3, FortiClient, DLP 등 보안프로그램에서 TouchEn 및 AnySign 폴더를 예외 처리</td>
+</tr>
+<tr>
+<td>재설치</td>
+<td>제어판 &rarr; 프로그램 추가/제거 &rarr; 두 모듈 삭제 후 사이트 재접속 시 재설치</td>
+</tr>
+<tr>
+<td>원격환경 주의</td>
+<td>RemoteView, RDP 등 원격 접속 환경에서 충돌 빈도 높음</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<hr />
+<h2>5. 참고 경로</h2>
+<ul>
+<li>TouchEn nxKey:<br />C:\Program Files (x86)\SoftCamp\TouchEn nxKey\</li>
+<li>AnySign for PC:<br />C:\Program Files (x86)\Wizvera\AnySign4PC\</li>
+</ul>
+<hr />
+<h2>6. 정리</h2>
+<p><b>Status Code 170</b> 오류는<br />보안 프로그램이 키보드 입력을 보호하는 과정에서<br />서로의 동작을 &lsquo;디버깅&rsquo;으로 인식하여 발생하는 오탐입니다.</p>
+<blockquote>
+<p>해결 요약:<br />오류창 닫기 &rarr; 프로세스 종료 &rarr; 브라우저 재시작 &rarr; 필요 시 재부팅</p>
+</blockquote>
+<p>최근 보안 정책이 강화되면서 이러한 충돌이 증가하고 있습니다.<br />보안이 중요하지만, <b>과도한 중복 보안은 시스템 불편을 초래할 수 있습니다.</b></p></div>
+  <a class="button" href="https://ksp668.tistory.com/39" target="_blank" rel="noopener">티스토리 블로그에서 전체 글 보기</a>
+</body>
+</html>
