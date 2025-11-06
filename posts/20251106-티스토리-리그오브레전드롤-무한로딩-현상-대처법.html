@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>리그오브레전드(롤) 무한로딩 현상 대처법</title>
+  <meta name="robots" content="index,follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; max-width: 800px; margin: auto; padding: 2em; }
+    .title { font-size: 1.8em; font-weight: 800; margin-bottom: 0.5em; }
+    .meta { color: #777; margin-bottom: 1em; }
+    .summary { font-size: 1em; color: #333; margin-bottom: 2em; }
+    .badge { display:inline-block; font-size: 0.85em; padding: 2px 8px; border-radius: 999px; background:#eef; margin-right:8px; }
+    .summary img { max-width: 100%; height: auto; }
+    a.button { background: #0077cc; color: white; padding: 0.6em 1em; text-decoration: none; border-radius: 6px; }
+    a.button:hover { background: #005fa3; }
+  </style>
+</head>
+<body>
+  <div class="title">리그오브레전드(롤) 무한로딩 현상 대처법</div>
+  <div class="meta"><span class="badge">티스토리</span>🗓 2025-11-06</div>
+  <div class="summary"><p>최근 리그오브레전드(League of Legends) 실행 시<br /><b>게임 시작 단계에서 무한로딩이 발생하는 현상</b>이 다수 보고되고 있습니다.<br />해당 문제는 <b>TouchEn 보안모듈과의 충돌</b>로 확인되었습니다.</p>
+<hr />
+<h2>  1. 문제 현상</h2>
+<ul>
+<li>게임 클라이언트 실행 후 챔피언 선택까지는 정상 진행</li>
+<li><b>게임 시작 직후 화면이 멈추거나 로딩에서 진행되지 않음</b></li>
+<li>작업관리자(Task Manager)에서 <b>CPU 사용률이 90~100%로 상승</b></li>
+<li>&ldquo;LeagueClientUxRender.exe&rdquo;, &ldquo;RiotClientServices.exe&rdquo; 등의 프로세스가 비정상적으로 자원 점유</li>
+</ul>
+<hr />
+<h2>⚙️ 2. 주요 원인</h2>
+<p>원인은 <b>TouchEn 계열 보안프로그램</b>의 <b>입력 훅(Hook) 충돌</b>로 분석됩니다.</p>
+<div>
+<div>프로그램명주요 기능문제 원인
+<table border="1" style="border-collapse: collapse; width: 100%;">
+<tbody>
+<tr>
+<td>TouchEnKey.exe</td>
+<td>키보드 보안</td>
+<td>게임 클라이언트의 입력 감지와 중복 훅 발생</td>
+</tr>
+<tr>
+<td>TouchEn nxClient.exe</td>
+<td>통합보안 관리</td>
+<td>프로세스 감시 기능이 클라이언트와 충돌</td>
+</tr>
+<tr>
+<td>TouchEn mVaccine</td>
+<td>보안 점검</td>
+<td>백그라운드 검사 중 CPU 자원 과다 사용</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>TouchEn은 금융 및 공공기관 사이트 접속 시 자동으로 설치되는 보안모듈이며,<br /><b>게임, 브라우저, 일부 개발 프로그램과의 충돌 사례가 빈번</b>합니다.</p>
+<hr />
+<h2>  3. 해결 방법</h2>
+<h3>✅ 1단계: 보안모듈 삭제</h3>
+<ol>
+<li><b>제어판 &rarr; 프로그램 추가/제거 (앱 및 기능)</b></li>
+<li>아래 프로그램 검색 후 제거
+<ul>
+<li>TouchEnKey, TouchEn nxClient, TouchEn mVaccine</li>
+</ul>
+</li>
+<li>삭제 완료 후 <b>롤(League of Legends) 재실행</b></li>
+</ol>
+<p>※ 별도의 <b>재부팅은 필요하지 않음</b><br />삭제 즉시 정상 동작이 확인됩니다.</p>
+<hr />
+<h3>✅ 2단계: 시작프로그램 비활성화(선택)</h3>
+<ol>
+<li>Ctrl + Shift + Esc &rarr; 작업관리자 실행</li>
+<li><b>시작프로그램 탭</b>에서 TouchEn, AnySign, AhnLab Safe Transaction 등 <b>자동실행 항목 비활성화</b></li>
+</ol>
+<hr />
+<h2>⚠️ 4. 주의 사항</h2>
+<ul>
+<li>TouchEn은 금융&middot;공공 사이트 접속 시 <b>자동 재설치</b>될 수 있습니다.</li>
+<li>향후 동일 증상 발생 시 동일한 절차로 삭제 필요</li>
+<li>삭제 시 은행 또는 정부24, 홈택스 등 일부 사이트에서 입력창 오류가 발생할 수 있으므로<br /><b>필요 시 재설치 후 사용 완료 즉시 제거</b> 권장</li>
+</ul></div>
+  <a class="button" href="https://ksp668.tistory.com/40" target="_blank" rel="noopener">티스토리 블로그에서 전체 글 보기</a>
+</body>
+</html>
