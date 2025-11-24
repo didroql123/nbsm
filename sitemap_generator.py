@@ -13,7 +13,7 @@ FEEDS = [
     "https://rss.blog.naver.com/syslogbook.xml"
 ]
 
-base_url = "https://didroql123.github.io/nbsm"
+base_url = "https://nbsm.vercel.app"
 SUMMARY_LEN = 160
 GUARD_SOURCES = []  # 머지 모드를 쓰므로 가드로 스킵하지 않음(원하면 ["네이버"] 등으로)
 
