@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>시놀로지 DDNS 서버 장애</title>
+  <meta name="robots" content="index,follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; max-width: 800px; margin: auto; padding: 2em; }
+    .title { font-size: 1.8em; font-weight: 800; margin-bottom: 0.5em; }
+    .meta { color: #777; margin-bottom: 1em; }
+    .summary { font-size: 1em; color: #333; margin-bottom: 2em; }
+    .badge { display:inline-block; font-size: 0.85em; padding: 2px 8px; border-radius: 999px; background:#eef; margin-right:8px; }
+    .summary img { max-width: 100%; height: auto; }
+    a.button { background: #0077cc; color: white; padding: 0.6em 1em; text-decoration: none; border-radius: 6px; }
+    a.button:hover { background: #005fa3; }
+  </style>
+</head>
+<body>
+  <div class="title">시놀로지 DDNS 서버 장애</div>
+  <div class="meta"><span class="badge">네이버</span>🗓 2025-12-03</div>
+  <div class="summary">오늘 오전부터 시놀로지 NAS 사용자 커뮤니티에서 “외부 접속이 안 된다”, “QuickConnect는 되는데 DDNS 주소는 접속이 안 된다” 라는 글이 여러 개 올라왔습니다. 확인해보니, Synology DDNS 서버 쪽에서 일시적인 장애가 발생했더군요. 저 역시 NAS에 연결된 DDNS 주소(xxx.synology.me)가 응답하지 않아, 급히 내부망으로 접속해 상태를 확인했습니다. 증상 요약 https://xxx.synology.me 접속 시 타임아웃 또는 “서버를 찾을 수 없습니다” 오류 발생 QuickConnect, 내부 IP 접속은 정상 작동 nslookup / ping 테스트 시 도메인 응답 없음 즉, 시놀로지 DDNS 서버 자체가 다운된 상태였습니다. NAS나 공유기 설정 문제는 아니었어요. DS....... <img src="https://blogthumb.pstatic.net/MjAyNTEyMDNfMTc0/MDAxNzY0NzU5NDQxNTQ4.R95aCApYA3rdY_Hw-MzetuClpGvPTmWQDnb1rgV9ZQ4g.9AtERIg7DYSdgU4azKU9UXs4Gp9hdx3JBDS2GA0jkuAg.PNG/image.png?type=s3" /></div>
+  <a class="button" href="https://m.blog.naver.com/syslogbook/224097173201?fromRss=true&amp;trackingCode=rss" target="_blank" rel="noopener">네이버 블로그에서 전체 글 보기</a>
+</body>
+</html>
