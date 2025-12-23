@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>인쇄 완료인데 출력 안될 때 (윈도우 프린터 오류)</title>
+  <meta name="robots" content="index,follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; max-width: 800px; margin: auto; padding: 2em; }
+    .title { font-size: 1.8em; font-weight: 800; margin-bottom: 0.5em; }
+    .meta { color: #777; margin-bottom: 1em; }
+    .summary { font-size: 1em; color: #333; margin-bottom: 2em; }
+    .badge { display:inline-block; font-size: 0.85em; padding: 2px 8px; border-radius: 999px; background:#eef; margin-right:8px; }
+    .summary img { max-width: 100%; height: auto; }
+    a.button { background: #0077cc; color: white; padding: 0.6em 1em; text-decoration: none; border-radius: 6px; }
+    a.button:hover { background: #005fa3; }
+  </style>
+</head>
+<body>
+  <div class="title">인쇄 완료인데 출력 안될 때 (윈도우 프린터 오류)</div>
+  <div class="meta"><span class="badge">티스토리</span>🗓 2025-12-23</div>
+  <div class="summary"><ul>
+<li><b>증상</b>: &lsquo;인쇄 완료&rsquo;로 뜨는데 종이는 안 나오고, 대기열도 비어 있음(윈도우만 전송 완료로 착각하는 경우).</li>
+<li><b>원인</b>: 공유프린터/네트워크 포트 끊김, 스풀러 버퍼 꼬임, 프린터 메모리 부족, 보안(DLP/백신) 차단이 주로 원인.</li>
+<li><b>해결 핵심</b>: <b>TCP/IP(IP 직접)로 재등록 + &ldquo;프린터에 직접 인쇄&rdquo; 설정 + 전원 리셋</b> 순서로 보면 대부분 해결.</li>
+<li><b>실무 팁</b>: 보안 예외(spoolsv.exe / PRINTERS 폴더)까지 건드리면 재발률이 확 줄어듭니다.</li>
+</ul>
+<p>  <b>설정 경로/화면 기준으로 단계별 체크리스트</b>는 네이버 본문에 더 자세히 정리해뒀어요.</p>
+<p>&nbsp;</p>
+<figure contenteditable="false" id="og_1766468707724"><a href="https://blog.naver.com/syslogbook/224104513501" rel="noopener" target="_blank">
+<div class="og-image">&nbsp;</div>
+<div class="og-text">
+<p class="og-title">인쇄 완료인데 출력 안돼요 - 윈도우 프린터 출력 오류 해결법</p>
+<p class="og-desc">회사에서 문서를 출력하려는데 &lsquo;인쇄 완료&rsquo; 메시지만 뜨고 종이가 안 나오면 정말 짜증나죠. 특히 보고서...</p>
+<p class="og-host">blog.naver.com</p>
+</div>
+</a></figure>
+<p>&nbsp;</p></div>
+  <a class="button" href="https://ksp668.tistory.com/52" target="_blank" rel="noopener">티스토리 블로그에서 전체 글 보기</a>
+</body>
+</html>
