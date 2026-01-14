@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>MSSQL CSV 업로드: 플랫 파일 가져오기</title>
+  <meta name="robots" content="index,follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; max-width: 800px; margin: auto; padding: 2em; }
+    .title { font-size: 1.8em; font-weight: 800; margin-bottom: 0.5em; }
+    .meta { color: #777; margin-bottom: 1em; }
+    .summary { font-size: 1em; color: #333; margin-bottom: 2em; }
+    .badge { display:inline-block; font-size: 0.85em; padding: 2px 8px; border-radius: 999px; background:#eef; margin-right:8px; }
+    .summary img { max-width: 100%; height: auto; }
+    a.button { background: #0077cc; color: white; padding: 0.6em 1em; text-decoration: none; border-radius: 6px; }
+    a.button:hover { background: #005fa3; }
+  </style>
+</head>
+<body>
+  <div class="title">MSSQL CSV 업로드: 플랫 파일 가져오기</div>
+  <div class="meta"><span class="badge">네이버</span>🗓 2026-01-14</div>
+  <div class="summary">업무하다 보면 “이 CSV를 DB에 넣어야 해요” 같은 요청이 은근 자주 옵니다.. 저는 웬만하면 SSMS(관리도구)에서 제공하는 ‘플랫 파일 가져오기’로 처리합니다. UI로 진행되니까 빠르고, 설명하기도 쉬워서 인수인계할 때도 편하더라고요. 다만, 이 방법도 많이 터지는 포인트가 딱 2개 있습니다. 컬럼 길이(문자 길이) 자동 추정이 틀려서 데이터가 잘림 한글 인코딩 문제로 글자가 깨짐 오늘 글은 이 두 가지를 중심으로 “안 터지게 넣는 방법”을 정리해볼게요. 1) CSV 준비: 최소한 이것만 체크 1) 첫 줄에 컬럼명(헤더)이 있으면 편함 플랫 파일 가져오기가 컬럼을 자동으로 생성할 때 헤더가 있으면 훨씬 깔끔합니다. 헤더가 없으면 “....... <img src="https://blogthumb.pstatic.net/MjAyNjAxMTRfMTQ2/MDAxNzY4MzYwMzkwODQ0.7E1xqF4dLI9tNIkUJe8b2zV8m1DVTx6Ntj-L9JmFJeQg.jKEkCCkZQdON907XfHwzEMzgGwpnaQ3_kIz_UEL_qCUg.PNG/image.png?type=s3" /></div>
+  <a class="button" href="https://m.blog.naver.com/syslogbook/224146113959?fromRss=true&amp;trackingCode=rss" target="_blank" rel="noopener">네이버 블로그에서 전체 글 보기</a>
+</body>
+</html>
