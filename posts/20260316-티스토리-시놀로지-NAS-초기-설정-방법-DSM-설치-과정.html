@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>시놀로지 NAS 초기 설정 방법 (DSM 설치 과정)</title>
+  <meta name="robots" content="index,follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; max-width: 800px; margin: auto; padding: 2em; }
+    .title { font-size: 1.8em; font-weight: 800; margin-bottom: 0.5em; }
+    .meta { color: #777; margin-bottom: 1em; }
+    .summary { font-size: 1em; color: #333; margin-bottom: 2em; }
+    .badge { display:inline-block; font-size: 0.85em; padding: 2px 8px; border-radius: 999px; background:#eef; margin-right:8px; }
+    .summary img { max-width: 100%; height: auto; }
+    a.button { background: #0077cc; color: white; padding: 0.6em 1em; text-decoration: none; border-radius: 6px; }
+    a.button:hover { background: #005fa3; }
+  </style>
+</head>
+<body>
+  <div class="title">시놀로지 NAS 초기 설정 방법 (DSM 설치 과정)</div>
+  <div class="meta"><span class="badge">티스토리</span>🗓 2026-03-16</div>
+  <div class="summary"><h2>서론</h2>
+<p>최근 NAS를 새로 구축하면서 <b>시놀로지 NAS 초기 설정</b>을 진행했습니다.<br />NAS 장비를 설치하고 나면 가장 먼저 <b>DSM(DiskStation Manager)</b> 설치와 기본 설정을 해야 합니다.</p>
+<p>생각보다 과정은 어렵지 않지만 처음 NAS를 설치하는 경우라면<br />어떤 순서로 진행해야 하는지 헷갈릴 수 있습니다.</p>
+<p>이번 글에서는 <b>NAS 설치 후 기본적으로 진행하는 DSM 초기 설정 과정</b>을 간단하게 정리해보겠습니다.</p>
+<p>&nbsp;</p>
+<figure contenteditable="false" id="og_1773625169745"><a href="https://m.blog.naver.com/syslogbook/224217982116" rel="noopener" target="_blank">
+<div class="og-image">&nbsp;</div>
+<div class="og-text">
+<p class="og-title">시놀로지 NAS 초기 설정 방법 (DSM 설치부터 스토리지 생성까지)</p>
+<p class="og-desc">지난 글에서는 NAS 장비를 직접 조립하고 RAM 추가와 하드디스크 장착까지 진행했습니다. 하드웨어 ...</p>
+<p class="og-host">blog.naver.com</p>
+</div>
+</a></figure>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<hr />
+<h2>1. NAS 장치 찾기</h2>
+<p>NAS를 네트워크에 연결한 후 아래 사이트로 접속합니다.</p>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div id="code-block-viewer">
+<div>
+<div><span><a href="https://finds.synology.com">https://finds.synology.com</a></span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>&nbsp;</div>
+</div>
+</div>
+</div>
+<p>같은 네트워크에 있는 NAS 장치를 자동으로 검색합니다.</p>
+<p>검색된 NAS를 선택하면 설치 화면으로 이동합니다.</p>
+<hr />
+<h2>2. DSM 운영체제 설치</h2>
+<p>NAS는 처음 사용할 때 <b>DSM 운영체제 설치</b>를 진행해야 합니다.</p>
+<p>설치는 자동으로 진행되며 약 10분 정도 소요됩니다.</p>
+<p>설치가 진행되는 동안 NAS 전원을 끄지 않도록 주의해야 합니다.</p>
+<hr />
+<h2>3. 관리자 계정 생성</h2>
+<p>DSM 설치가 완료되면 관리자 계정을 생성합니다.</p>
+<p>설정 항목은 다음과 같습니다.</p>
+<ul>
+<li>NAS 장치 이름</li>
+<li>관리자 계정</li>
+<li>관리자 비밀번호</li>
+</ul>
+<p>관리자 계정은 NAS 전체를 관리하는 계정이기 때문에<br />보안을 위해 강력한 비밀번호를 사용하는 것이 좋습니다.</p>
+<hr />
+<h2>4. 스토리지 설정</h2>
+<p>NAS를 실제 저장소로 사용하려면<br /><b>스토리지 풀(Storage Pool)</b> 과 <b>볼륨(Volume)</b> 을 생성해야 합니다.</p>
+<p>스토리지 풀은 여러 개의 하드디스크를 묶어<br />하나의 저장 공간처럼 사용할 수 있도록 만들어 줍니다.</p>
+<p>시놀로지 NAS에서는 보통 <b>SHR(Synology Hybrid RAID)</b> 방식을 많이 사용합니다.</p>
+<hr />
+<h2>마무리</h2>
+<p>DSM 설치와 스토리지 설정까지 완료하면<br />NAS를 파일 서버로 사용할 기본 준비가 끝납니다.</p></div>
+  <a class="button" href="https://ksp668.tistory.com/72" target="_blank" rel="noopener">티스토리 블로그에서 전체 글 보기</a>
+</body>
+</html>
