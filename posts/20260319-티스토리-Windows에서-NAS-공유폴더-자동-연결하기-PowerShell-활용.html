@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Windows에서 NAS 공유폴더 자동 연결하기 (PowerShell 활용)</title>
+  <meta name="robots" content="index,follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; max-width: 800px; margin: auto; padding: 2em; }
+    .title { font-size: 1.8em; font-weight: 800; margin-bottom: 0.5em; }
+    .meta { color: #777; margin-bottom: 1em; }
+    .summary { font-size: 1em; color: #333; margin-bottom: 2em; }
+    .badge { display:inline-block; font-size: 0.85em; padding: 2px 8px; border-radius: 999px; background:#eef; margin-right:8px; }
+    .summary img { max-width: 100%; height: auto; }
+    a.button { background: #0077cc; color: white; padding: 0.6em 1em; text-decoration: none; border-radius: 6px; }
+    a.button:hover { background: #005fa3; }
+  </style>
+</head>
+<body>
+  <div class="title">Windows에서 NAS 공유폴더 자동 연결하기 (PowerShell 활용)</div>
+  <div class="meta"><span class="badge">티스토리</span>🗓 2026-03-19</div>
+  <div class="summary"><p>NAS를 구축하고 공유폴더를 만들면 여러 PC에서 파일을 공유하기 편해집니다.<br />하지만 사용자 PC마다 네트워크 드라이브를 직접 연결해야 하는 번거로움이 있습니다.</p>
+<p>그래서 이번에는 <b>Windows에서 NAS 공유폴더를 자동으로 연결하는 방법</b>을 간단히 정리해 보았습니다.</p>
+<p>NAS 구축과 기본 설정 과정은 이전 글에서 정리해 두었습니다.</p>
+<p>  NAS 구축 과정 참고</p>
+<figure contenteditable="false" id="og_1773903709120"><a href="https://m.blog.naver.com/syslogbook/224222326781" rel="noopener" target="_blank">
+<div class="og-image">&nbsp;</div>
+<div class="og-text">
+<p class="og-title">Windows에서 NAS 공유폴더 자동 연결하는 방법</p>
+<p class="og-desc">NAS를 구축하고 공유폴더까지 설정했다면 이제 사용자 PC에서 NAS를 편하게 사용할 수 있도록 연결...</p>
+<p class="og-host">blog.naver.com</p>
+</div>
+</a></figure>
+<p>&nbsp;</p>
+<hr />
+<h2>NAS 공유폴더 접속 방식</h2>
+<p>Windows에서는 다음과 같은 방식으로 NAS 공유폴더에 접근할 수 있습니다.</p>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div id="code-block-viewer">
+<div>
+<div><span>\\NAS_IP\공유폴더</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>&nbsp;</div>
+</div>
+</div>
+</div>
+<p>또는 NAS 이름을 이용하는 방식도 있습니다.</p>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div id="code-block-viewer">
+<div>
+<div><span>\\NAS이름\공유폴더</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>&nbsp;</div>
+</div>
+</div>
+</div>
+<p>이 방식은 간단하지만 매번 경로를 입력해야 하는 번거로움이 있습니다.</p>
+<p>그래서 보통은 NAS 공유폴더를 <b>네트워크 드라이브로 연결</b>해서 사용합니다.</p>
+<p>예를 들어 탐색기에서 아래처럼 표시됩니다.</p>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div id="code-block-viewer">
+<div>
+<div><span>Z:\ 공유폴더</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>&nbsp;</div>
+</div>
+</div>
+</div>
+<p>이렇게 연결하면 일반 드라이브처럼 사용할 수 있어 훨씬 편합니다.</p>
+<hr />
+<h2>PowerShell을 이용한 자동 연결</h2>
+<p>사용자 PC가 많을 경우 매번 드라이브를 설정하는 것이 번거롭기 때문에<br />PowerShell을 이용해 <b>NAS 드라이브 자동 연결 프로그램</b>을 만들어 사용할 수 있습니다.</p>
+<p>드라이브 연결 자체는 Windows의 net use 명령을 이용합니다.</p>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div id="code-block-viewer">
+<div>
+<div><span>net use Z: \\NAS_IP\공유폴더 /persistent:yes</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>&nbsp;</div>
+</div>
+</div>
+</div>
+<p>이 옵션을 사용하면 컴퓨터를 재부팅해도 드라이브 연결이 유지됩니다.</p>
+<hr />
+<h2>마무리</h2>
+<p>NAS를 구축한 이후에는 사용자들이 쉽게 접근할 수 있도록<br />네트워크 드라이브 연결 환경을 만들어주는 것도 중요합니다.</p>
+<p>PowerShell을 이용해 자동 연결 프로그램을 만들어 두면<br />사용자가 직접 드라이브를 설정할 필요가 없어 관리가 훨씬 편해집니다.</p>
+<p>NAS를 처음 구축하거나 파일 서버 환경을 구성하려는 분들에게<br />이번 방법이 도움이 되었으면 합니다.</p></div>
+  <a class="button" href="https://ksp668.tistory.com/73" target="_blank" rel="noopener">티스토리 블로그에서 전체 글 보기</a>
+</body>
+</html>
